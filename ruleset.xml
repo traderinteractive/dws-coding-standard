@@ -20,7 +20,6 @@
     <rule ref="Squiz.ControlStructures.ForLoopDeclaration" />
     <rule ref="Squiz.ControlStructures.LowercaseDeclaration" />
     <rule ref="Zend.Files.ClosingTag" />
-    <rule ref="PEAR.Files.IncludingFile" />
     <rule ref="Generic.Files.LineLength">
         <properties>
             <property name="lineLimit" value="144" />
