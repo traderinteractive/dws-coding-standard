@@ -29,6 +29,12 @@
 		<email>jonathan.gaillard@dominionenterprises.com</email>
 		<active>yes</active>
 	</developer>
+	<developer>
+		<name>Robert Bittle</name>
+		<user>guywithnose</user>
+		<email>robert.bittle@dominionenterprises.com</email>
+		<active>yes</active>
+	</developer>
 	<date>2012-04-27</date>
 
 	<version>
@@ -49,6 +55,23 @@
 	<contents>
         <dir baseinstalldir="/PHP/CodeSniffer/Standards/DWS" name="/">
 			<file name="ruleset.xml" role="php" />
+			<dir name="Sniffs">
+				<dir name="ControlStructures">
+					<file name="ControlSignatureSniff.php" role="php" />
+				</dir>
+			</dir>
+			<dir name="Docs">
+				<dir name="ControlStructures">
+					<file name="ControlSignatureStandard.xml" role="php" />
+				</dir>
+			</dir>
+			<dir name="tests">
+				<dir name="Sniffs">
+					<dir name="ControlStructures">
+						<file name="ControlSignatureSniffTest.php" role="test" />
+					</dir>
+				</dir>
+			</dir>
 		</dir>
 	</contents>
 
