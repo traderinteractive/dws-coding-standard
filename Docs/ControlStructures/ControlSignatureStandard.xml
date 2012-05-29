@@ -1,0 +1,37 @@
+<documentation title="Control Structures must be spaced properly">
+    <standard>
+    <![CDATA[
+    Control structures must have spaces before conditions and curly braces on the same line.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Correct spacing.">
+        <![CDATA[
+if<em> </em>($value === true)
+    echo 3;
+    
+if<em> </em>($value === true)<em> </em>{
+    echo 3;
+    echo 4;
+}
+        ]]>
+        </code>
+        <code title="Invalid: Incorrect spacing.">
+        <![CDATA[
+if($value === true)
+    echo 3;
+    
+if($value === true){
+    echo 3;
+    echo 4;
+}
+
+if ($value === true)
+{
+    echo 3;
+    echo 4;
+}
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>
