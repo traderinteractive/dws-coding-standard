@@ -1,1 +1,5 @@
 *.tgz
+scripts/build/coverage/
+scripts/build/logs/
+scripts/build/graphs/
+docs/
