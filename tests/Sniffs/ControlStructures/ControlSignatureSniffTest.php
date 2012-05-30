@@ -13,13 +13,13 @@ class DWS_Sniffs_ControlStructures_ControlSignatureSniff_Test extends PHPUnit_Fr
     public function setUp()
     {
         $this->_phpcs = new PHP_CodeSniffer();
-        $this->_inlineIfSpaceMissingFailure = <<<'IISMF'
+        $this->_inlineIfSpaceMissingFailure = <<< 'IISMF'
 <?php
 if($value === true)
     echo 3;
 IISMF;
 
-        $this->_structuredIfSpaceMissingFailure = <<<'SISMF'
+        $this->_structuredIfSpaceMissingFailure = <<< 'SISMF'
 <?php
 if($value === true) {
     echo 3;
