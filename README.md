@@ -54,6 +54,7 @@
     * [Silenced Errors](#silenced-errors)
 * [Scope](#scope)
     * [Static This](#static-this)
+    * [Consistent Variable Scoping](#consistent-variable-scoping)
 * [Strings](#strings)
     * [Echos](#echos)
     * [Unnecessary Concatenation](#unnecessary-concatenation)
@@ -829,6 +830,26 @@ static function foo()
 {
     return $this->staticMember;
 }
+```
+
+### Consistent Variable Scoping
+A variable must be declared first in the highest scope that it will be used.
+
+Valid:
+```php
+<?php
+$value = null;
+if ($i < 3)
+    $value = 3;
+echo $value;
+```
+
+Invalid:
+```php
+<?php
+if ($i < 3)
+    $value = 3;
+echo $value;
 ```
 
 ## Strings
