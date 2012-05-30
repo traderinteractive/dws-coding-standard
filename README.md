@@ -1086,3 +1086,34 @@ $foo = 1;
 $bar = 2;
 
 ```
+
+### Control Structures must be spaced properly
+Control structures must have spaces before conditions and curly braces on the same line.
+
+Valid:
+```php
+<?php
+if ($value === true)
+    echo 3;
+    
+if ($value === true) {
+    echo 3;
+}
+```
+
+Invalid:
+```php
+
+<?php
+if($value === true)
+    echo 3;
+    
+if($value === true){
+    echo 3;
+}
+
+if ($value === true)
+{
+    echo 3;
+}
+```
