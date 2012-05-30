@@ -1,0 +1,115 @@
+
+<project name="API" default="build"  basedir="../../">
+
+    <target name="clean">
+        <delete dir="${project.basedir}/scripts/build/logs"/>
+        <delete dir="${project.basedir}/scripts/build/graphs"/>
+        <delete dir="${project.basedir}/scripts/build/coverage"/>
+        <delete dir="${project.basedir}/scripts/build/php-code-browser"/>
+        <delete dir="${project.basedir}/docs/sniffs"/>
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${project.basedir}/scripts/build/logs"/>
+        <mkdir dir="${project.basedir}/scripts/build/graphs"/>
+        <mkdir dir="${project.basedir}/scripts/build/coverage"/>
+        <mkdir dir="${project.basedir}/scripts/build/php-code-browser"/>
+        <mkdir dir="${project.basedir}/docs/sniffs"/>
+    </target>
+
+    <target name="phplint">
+        <phplint haltonfailure="true" deprecatedaserror="true">
+            <fileset dir="${project.basedir}">
+                <include name="DWS/**/*.php"/>
+            </fileset>
+        </phplint>
+    </target>
+
+    <target name="phpunit">
+        <exec command="phpunit" dir="${project.basedir}/tests" checkreturn="true"/>
+    </target>
+
+    <target name="phpunit-min">
+        <phpunit codecoverage="false" printsummary="true" haltonfailure="true" bootstrap="${project.basedir}/tests/bootstrap.php">
+            <batchtest>
+                <fileset dir="${project.basedir}/tests">
+                    <include name="**/*Test.php" />
+                </fileset>
+            </batchtest>
+        </phpunit>
+    </target>
+
+    <target name="phpcs">
+        <phpcodesniffer haltonerror="true" showWarnings="false" tabWidth="4" standard="DWS" ignorepatterns="*.phtml">
+            <fileset dir="${project.basedir}">
+                <include name="**/*.php"/>
+            </fileset>
+            <formatter type="checkstyle" outfile="${project.basedir}/scripts/build/logs/checkstyle.xml"/>
+        </phpcodesniffer>
+    </target>
+
+    <target name="phpcs-min">
+        <phpcodesniffer haltonerror="true" showWarnings="false" tabWidth="4" standard="DWS" ignorepatterns="*.phtml">
+            <fileset dir="${project.basedir}">
+                <include name="**/*.php"/>
+            </fileset>
+        </phpcodesniffer>
+    </target>
+
+    <target name="phpdoc">
+        <phpdoc title="DWS Sniff Documentation"
+                target="${project.basedir}/docs/sniffs"
+                sourcecode="true"
+                customtags="true"
+                quiet="true"
+                defaultpackagename="Sniffs"
+                defaultcategoryname="Sniffs"
+                undocumentedelements="true"
+                pear="false"
+                output="html:frames:earthli">
+            <fileset dir="${project.basedir}">
+                <include name="DWS/**/*.php"/>
+            </fileset>
+            <projdocfileset dir="${project.basedir}/docs">
+                <include name="README" />
+            </projdocfileset>
+        </phpdoc>
+    </target>
+
+    <target name="pdepend">
+        <phpdepend>
+            <fileset dir="${project.basedir}">
+                <include name="DWS/**/*.php"/>
+            </fileset>
+            <logger type="phpunit-xml" outfile="${project.basedir}/scripts/build/logs/phpunit.metrics.xml"/>
+            <logger type="jdepend-xml" outfile="${project.basedir}/scripts/build/logs/jdepend.xml"/>
+            <logger type="summary-xml" outfile="${project.basedir}/scripts/build/logs/summary.xml"/>
+            <logger type="jdepend-chart" outfile="${project.basedir}/scripts/build/graphs/jdepend.svg"/>
+            <logger type="overview-pyramid" outfile="${project.basedir}/scripts/build/graphs/pyramid.svg"/>
+            <analyzer type="coderank-mode" value="inheritance,property,method"/>
+        </phpdepend>
+    </target>
+
+    <target name="phpmd">
+        <phpmd rulesets="codesize,unusedcode,naming">
+            <fileset dir="${project.basedir}">
+                <include name="DWS/**/*.php"/>
+            </fileset>
+            <formatter type="xml" outfile="${project.basedir}/scripts/build/logs/pmd.xml"/>
+        </phpmd>
+    </target>
+
+    <target name="phpcpd">
+        <phpcpd>
+            <fileset dir="${project.basedir}">
+                <include name="DWS/**/*.php"/>
+            </fileset>
+            <formatter type="pmd" outfile="${project.basedir}/scripts/build/logs/cpd.pmd.xml"/>
+        </phpcpd>
+    </target>
+
+    <target name="build" depends="clean, prepare, phplint, phpunit, phpcs, pdepend, phpmd, phpcpd, phpdoc" />
+
+    <target name="pre-commit" depends="clean, prepare, phplint, phpcs-min" />
+
+</project>
