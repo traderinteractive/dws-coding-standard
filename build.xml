@@ -128,7 +128,100 @@
         </phpcpd>
     </target>
 
-    <target name="build" depends="clean, prepare, phplint, phpcs, phpunit, pdepend, phpmd, phpcpd, phpdoc" />
+    <target name="package">
+
+        <property name="version" value="0.2.0" />
+        <property name="package" value="DWS_Coding_Standard-${version}" />
+
+        <mkdir dir="${project.basedir}/build/${package}"/>
+
+        <pearpkg2 name="DWS_Coding_Standard" dir="${project.basedir}">
+            <option name="outputdirectory" value="${project.basedir}/build/${package}"/>
+            <option name="packagefile" value="package.xml"/>
+            <option name="packagedirectory" value="."/>
+            <option name="baseinstalldir" value="/PHP/CodeSniffer/Standards/DWS"/>
+            <option name="channel" value="pear.traderonline.com"/>
+            <option name="summary" value="DWS Coding Standards" />
+            <option name="description" value="DWS Coding Standards" />
+            <option name="apiversion" value="${version}"/>
+            <option name="apistability" value="devel"/>
+            <option name="releaseversion" value="${version}"/>
+            <option name="releasestability" value="snapshot"/>
+            <option name="license" value="none"/>
+            <option name="phpdep" value="5.1.0"/>
+            <option name="pearinstallerdep" value="1.4.6"/>
+            <option name="packagetype" value="php"/>
+            <option name="notes" value="Still in heavy development"/>
+            <mapping name="maintainers">
+                <element>
+                    <element key="name" value="Ray Adkins"/>
+                    <element key="handle" value="segnus"/>
+                    <element key="email" value="raymond.adkins@dominionenterprises.com"/>
+                    <element key="role" value="lead"/>
+                </element>
+                <element>
+                    <element key="name" value="Spencer Rinehart" />
+                    <element key="handle" value="anubis" />
+                    <element key="email" value="spencer.rinehart@dominionenterprises.com" />
+                    <element key="role" value="developer"/>
+                </element>
+                <element>
+                    <element key="name" value="Chad Gray" />
+                    <element key="handle" value="chadicus" />
+                    <element key="email" value="chad.gray@dominionenterprises.com" />
+                    <element key="role" value="developer"/>
+                </element>
+                <element>
+                    <element key="name" value="Jonathan Gaillard" />
+                    <element key="handle" value="gaillard" />
+                    <element key="email" value="jonathan.gaillard@dominionenterprises.com" />
+                    <element key="role" value="developer"/>
+                </element>
+                <element>
+                    <element key="name" value="Robert Bittle" />
+                    <element key="handle" value="guywithnose" />
+                    <element key="email" value="robert.bittle@dominionenterprises.com" />
+                    <element key="role" value="developer"/>
+                </element>
+            </mapping>
+            <mapping name="deps">
+                <element>
+                    <element key="channel" value="pear.php.net" />
+                    <element key="name" value="PHP_CodeSniffer" />
+                </element>
+            </mapping>
+          
+            <fileset dir="${project.basedir}">
+                <include name="ruleset.xml" />
+                <include name="Docs/**/*.xml" />
+                <include name="Sniffs/**/*.php" />
+                <include name="tests/**/*.php" />
+                <include name="README.md" />
+            </fileset>
+        </pearpkg2>
+
+        <copy todir="${project.basedir}/build/${package}">
+            <fileset dir="${project.basedir}">
+                <include name="ruleset.xml" />
+                <include name="Docs/**/*.xml" />
+                <include name="Sniffs/**/*.php" />
+                <include name="tests/**/*.php" />
+                <include name="README.md" />
+            </fileset>
+        </copy>
+
+        <exec dir="${project.basedir}/build/${package}" command="pear package" checkreturn="true" />
+
+        <if>
+            <isset property="pear.channel.dir" />
+            <then>
+                <taskdef classname="phing.tasks.ext.pirum.PirumAddTask" name="pirumadd"/>
+                <pirumadd targetdir="${pear.channel.dir}" packagefile="${project.basedir}/build/${package}/${package}.tgz" />
+            </then>
+        </if>
+    </target>
+
+    <target name="build" depends="clean, prepare, phplint, phpcs, phpunit, pdepend, phpmd, phpcpd, phpdoc, package" />
 
     <target name="pre-commit" depends="clean, prepare, phplint, phpcs-min" />
 
