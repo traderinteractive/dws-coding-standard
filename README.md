@@ -335,7 +335,7 @@ if($test)
 ```
 
 ### Foreach Loop Declarations
-There should be a space between each condition of a foreach loop.
+There should be a space between each element of a foreach loop.
 
 Valid:
 ```php
