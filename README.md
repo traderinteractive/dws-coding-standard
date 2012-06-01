@@ -63,7 +63,7 @@
     * [Casts](#casts)
     * [Control Structures](#control-structures-1)
     * [Indentation](#indentation)
-    * [Function Opening Braces](#function-opening-braces)
+    * [Opening and Closing Braces](#opening-and-closing-braces)
     * [Language Constructs](#language-constructs)
     * [Logical Operators](#logical-operators)
     * [Object Operators](#object-operators)
@@ -950,8 +950,8 @@ if ( $test ) {
 ### Indentation
 4 spaces should be used for indentation, not tabs.
 
-### Function Opening Braces
-There should be no empty line after the opening brace of a function.
+### Opening and Closing Braces
+There should be no empty line after the opening brace or before the closing brace of a function, class, or control structure.
 
 Valid:
 ```php
@@ -969,6 +969,19 @@ function foo()
 {
 
     echo "Hello\n";
+}
+```
+
+Invalid:
+```php
+<?php
+class Foo()
+{
+    public function bar()
+    {
+        echo 3;
+    }
+
 }
 ```
 
