@@ -54,6 +54,7 @@
     * [Silenced Errors](#silenced-errors)
 * [Scope](#scope)
     * [Static This](#static-this)
+    * [Consistent Variable Scoping](#consistent-variable-scoping)
 * [Strings](#strings)
     * [Echos](#echos)
     * [Unnecessary Concatenation](#unnecessary-concatenation)
@@ -334,7 +335,7 @@ if($test)
 ```
 
 ### Foreach Loop Declarations
-There should be a space between each condition of a foreach loop.
+There should be a space between each element of a foreach loop.
 
 Valid:
 ```php
@@ -630,11 +631,7 @@ function foo($bar, $baz)
         if ($baz) {
             if ($bar != $baz) {
                 if ($bar < $baz) {
-                    if ($bar > 0) {
-                        if ($bar % 2) {
-                            echo "Hello";
-                        }
-                    }
+                    echo "Hello";
                 }
             }
         }
@@ -816,19 +813,45 @@ Static methods should not use `$this`.
 Valid:
 ```php
 <?php
-static function foo()
+class Foo
 {
-    return self::$staticMember;
+    static function bar()
+    {
+        return self::$staticMember;
+    }
 }
 ```
 
 Invalid:
 ```php
 <?php
-static function foo()
+class Foo
 {
-    return $this->staticMember;
+    static function bar()
+    {
+        return $this->$staticMember;
+    }
 }
+```
+
+### Consistent Variable Scoping
+A variable must be declared first in the highest scope that it will be used.
+
+Valid:
+```php
+<?php
+$value = null;
+if ($i < 3)
+    $value = 3;
+echo $value;
+```
+
+Invalid:
+```php
+<?php
+if ($i < 3)
+    $value = 3;
+echo $value;
 ```
 
 ## Strings
