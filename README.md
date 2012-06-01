@@ -631,11 +631,7 @@ function foo($bar, $baz)
         if ($baz) {
             if ($bar != $baz) {
                 if ($bar < $baz) {
-                    if ($bar > 0) {
-                        if ($bar % 2) {
-                            echo "Hello";
-                        }
-                    }
+                    echo "Hello";
                 }
             }
         }
