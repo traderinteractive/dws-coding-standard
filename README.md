@@ -817,18 +817,24 @@ Static methods should not use `$this`.
 Valid:
 ```php
 <?php
-static function foo()
+class Foo
 {
-    return self::$staticMember;
+    static function bar()
+    {
+        return self::$staticMember;
+    }
 }
 ```
 
 Invalid:
 ```php
 <?php
-static function foo()
+class Foo
 {
-    return $this->staticMember;
+    static function bar()
+    {
+        return $this->staticMember;
+    }
 }
 ```
 
