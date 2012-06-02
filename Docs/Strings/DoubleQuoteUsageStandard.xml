@@ -1,0 +1,20 @@
+<documentation title="Double Quotes Usage">
+    <standard>
+    <![CDATA[
+    Use of double quotes should be warranted.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Warrented use of double quotes.">
+        <![CDATA[
+$world = 'World';
+$foo = <em>"</em>Hello, <em>$</em>world<em>"</em>;
+        ]]>
+        </code>
+        <code title="Invalid: Unwarrented use of double quotes.">
+        <![CDATA[
+$foo = <em>"</em>Hello, World<em>"</em>;
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>

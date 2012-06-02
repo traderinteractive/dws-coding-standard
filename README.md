@@ -58,6 +58,7 @@
 * [Strings](#strings)
     * [Echos](#echos)
     * [Unnecessary Concatenation](#unnecessary-concatenation)
+    * [Double Quote Usage](#double-quote-usage)
 * [Whitespace](#whitespace)
     * [Casts](#casts)
     * [Control Structures](#control-structures-1)
@@ -888,6 +889,22 @@ Invalid:
 ```php
 <?php
 $foo = 'Hello,' . ' ' . "World\n";
+```
+
+### Double Quote Usage
+Use of double quotes should be warranted.
+
+Valid:
+```php
+<?php
+$world = 'World';
+$foo = "Hello, $world";
+```
+
+Invalid:
+```php
+<?php
+$foo = "Hello, World";
 ```
 
 ## Whitespace
