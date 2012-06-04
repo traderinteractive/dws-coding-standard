@@ -1,0 +1,22 @@
+<documentation title="One Line Control Structures">
+    <standard>
+    <![CDATA[
+    Control structures that don't require braces should not use them.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: No braces.">
+        <![CDATA[
+if ($value === true)
+    echo 3;
+]]>
+        </code>
+        <code title="Invalid: Braces.">
+        <![CDATA[
+if ($value === true) <em>{</em>
+    echo 3;
+<em>}</em>
+]]>
+        </code>
+    </code_comparison>
+</documentation>
