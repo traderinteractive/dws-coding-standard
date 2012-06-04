@@ -22,6 +22,7 @@
     * [Foreach Loop Declarations](#foreach-loop-declarations)
     * [For Loop Declarations](#for-loop-declarations)
     * [Lowercase Declarations](#lowercase-declarations)
+    * [One Line Control Structures](#one-line-control-structures)
 * [Files](#files)
     * [Closing Tags](#closing-tags)
     * [Including Files](#including-files)
@@ -54,14 +55,16 @@
     * [Silenced Errors](#silenced-errors)
 * [Scope](#scope)
     * [Static This](#static-this)
+    * [Consistent Variable Scoping](#consistent-variable-scoping)
 * [Strings](#strings)
     * [Echos](#echos)
     * [Unnecessary Concatenation](#unnecessary-concatenation)
+    * [Double Quote Usage](#double-quote-usage)
 * [Whitespace](#whitespace)
     * [Casts](#casts)
     * [Control Structures](#control-structures-1)
     * [Indentation](#indentation)
-    * [Function Opening Braces](#function-opening-braces)
+    * [Opening and Closing Braces](#opening-and-closing-braces)
     * [Language Constructs](#language-constructs)
     * [Logical Operators](#logical-operators)
     * [Object Operators](#object-operators)
@@ -334,7 +337,7 @@ if($test)
 ```
 
 ### Foreach Loop Declarations
-There should be a space between each condition of a foreach loop.
+There should be a space between each element of a foreach loop.
 
 Valid:
 ```php
@@ -386,6 +389,24 @@ Invalid:
 <?php
 If ($test)
     $var = 1;
+```
+
+### One Line Control Structures
+Control structures that don't require braces should not use them.
+
+Valid:
+```php
+<?php
+if ($value === true)
+    echo 3;
+```
+
+Invalid:
+```php
+<?php
+if ($value === true) {
+    echo 3;
+}
 ```
 
 ## Files
@@ -816,19 +837,45 @@ Static methods should not use `$this`.
 Valid:
 ```php
 <?php
-static function foo()
+class Foo
 {
-    return self::$staticMember;
+    static function bar()
+    {
+        return self::$staticMember;
+    }
 }
 ```
 
 Invalid:
 ```php
 <?php
-static function foo()
+class Foo
 {
-    return $this->staticMember;
+    static function bar()
+    {
+        return $this->staticMember;
+    }
 }
+```
+
+### Consistent Variable Scoping
+A variable must be declared first in the highest scope that it will be used.
+
+Valid:
+```php
+<?php
+$value = null;
+if ($i < 3)
+    $value = 3;
+echo $value;
+```
+
+Invalid:
+```php
+<?php
+if ($i < 3)
+    $value = 3;
+echo $value;
 ```
 
 ## Strings
@@ -861,6 +908,22 @@ Invalid:
 ```php
 <?php
 $foo = 'Hello,' . ' ' . "World\n";
+```
+
+### Double Quote Usage
+Use of double quotes should be warranted.
+
+Valid:
+```php
+<?php
+$world = 'World';
+$foo = "Hello, $world";
+```
+
+Invalid:
+```php
+<?php
+$foo = "Hello, World";
 ```
 
 ## Whitespace
@@ -906,8 +969,8 @@ if ( $test ) {
 ### Indentation
 4 spaces should be used for indentation, not tabs.
 
-### Function Opening Braces
-There should be no empty line after the opening brace of a function.
+### Opening and Closing Braces
+There should be no empty line after the opening brace or before the closing brace of a function, class, or control structure.
 
 Valid:
 ```php
@@ -925,6 +988,19 @@ function foo()
 {
 
     echo "Hello\n";
+}
+```
+
+Invalid:
+```php
+<?php
+class Foo()
+{
+    public function bar()
+    {
+        echo 3;
+    }
+
 }
 ```
 
