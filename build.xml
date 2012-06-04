@@ -35,7 +35,7 @@
               <include name="Sniffs/**/*.php" />
            </fileset>
         </coverage-setup>
-        <phpunit codecoverage="true" printsummary="true" haltonfailure="true">
+        <phpunit codecoverage="true" printsummary="true" haltonfailure="false">
             <formatter type="xml" todir="${project.basedir}/build/logs" outfile="phpunit.xml"/>
             <batchtest>
                 <fileset dir="${project.basedir}/tests">
@@ -50,7 +50,7 @@
     </target>
 
     <target name="phpunit-min">
-        <phpunit codecoverage="false" printsummary="true" haltonfailure="true" bootstrap="${project.basedir}/tests/bootstrap.php">
+        <phpunit codecoverage="false" printsummary="true" haltonfailure="true">
             <batchtest>
                 <fileset dir="${project.basedir}/tests">
                     <include name="**/*Test.php" />
@@ -190,7 +190,9 @@
                     <element key="name" value="PHP_CodeSniffer" />
                 </element>
             </mapping>
-          
+
+            <role extension="xml" role="php" />          
+
             <fileset dir="${project.basedir}">
                 <include name="ruleset.xml" />
                 <include name="Docs/**/*.xml" />
@@ -221,7 +223,7 @@
         </if>
     </target>
 
-    <target name="build" depends="clean, prepare, phplint, phpcs, phpunit, pdepend, phpmd, phpcpd, phpdoc, package" />
+    <target name="build" depends="clean, prepare, phplint, phpcs, phpunit-min, pdepend, phpmd, phpcpd, phpdoc, package" />
 
     <target name="pre-commit" depends="clean, prepare, phplint, phpcs-min" />
 
