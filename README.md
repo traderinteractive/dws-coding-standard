@@ -22,6 +22,7 @@
     * [Foreach Loop Declarations](#foreach-loop-declarations)
     * [For Loop Declarations](#for-loop-declarations)
     * [Lowercase Declarations](#lowercase-declarations)
+    * [One Line Control Structures](#one-line-control-structures)
 * [Files](#files)
     * [Closing Tags](#closing-tags)
     * [Including Files](#including-files)
@@ -388,6 +389,24 @@ Invalid:
 <?php
 If ($test)
     $var = 1;
+```
+
+### One Line Control Structures
+Control structures that don't require braces should not use them.
+
+Valid:
+```php
+<?php
+if ($value === true)
+    echo 3;
+```
+
+Invalid:
+```php
+<?php
+if ($value === true) {
+    echo 3;
+}
 ```
 
 ## Files
