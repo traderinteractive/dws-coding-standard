@@ -1,0 +1,25 @@
+<documentation title="Consistent Variable Scoping">
+    <standard>
+    <![CDATA[
+    A variable must be declared first in the highest scope that it will be used.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Variable is only used within its own scope.">
+        <![CDATA[
+<em>$value = null;</em>
+if ($i < 3)
+    $value = 3;
+    
+echo $value;
+        ]]>
+        </code>
+        <code title="Invalid: Variable is accessed outside its scope.">
+        <![CDATA[
+if ($i < 3)
+    $value = 3;
+<em>echo $value;</em>
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>

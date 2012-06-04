@@ -1,0 +1,57 @@
+<documentation title="Superfluous Whitespace">
+    <standard>
+    <![CDATA[
+    There should be no whitespace at the beginning or end of files or at the end of lines.  There should also never be 2 blank lines in a row.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: No superfluous whitespace.">
+        <![CDATA[
+<?php
+$foo = 1;
+$bar = 2;
+        ]]>
+        </code>
+        <code title="Invalid: Two consecutive new lines.">
+        <![CDATA[
+$foo = 1;
+<em></em>
+<em></em>
+$bar = 2;
+        ]]>
+        </code>
+    </code_comparison>
+    <standard>
+    <![CDATA[
+    There should be no empty line after the opening brace or before the closing brace of a function, class, or control structure.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: No superfluous whitespace.">
+        <![CDATA[
+function foo()
+{
+    echo "Hello\n";
+}
+        ]]>
+        </code>
+        <code title="Invalid: An extra line at beginning or end of function or class.">
+        <![CDATA[
+function foo()
+{
+<em></em>
+    echo "Hello\n";
+}
+
+class Foo()
+{
+    public function bar()
+    {
+        echo 3;
+    }
+<em></em>
+}
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>
