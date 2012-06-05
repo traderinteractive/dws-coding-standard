@@ -130,7 +130,7 @@
 
     <target name="package">
 
-        <property name="version" value="0.2.0" />
+        <property name="version" value="0.2.1" />
         <property name="package" value="DWS_Coding_Standard-${version}" />
 
         <mkdir dir="${project.basedir}/build/${package}"/>

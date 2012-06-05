@@ -45,9 +45,17 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
            )
             ++$level;
 
-        if ($functionIndex !== false && $tokens[$functionIndex]['scope_closer'] > $stackPtr) {
+        if ($functionIndex !== false
+                && array_key_exists('scope_closer', $tokens[$functionIndex])
+                && $tokens[$functionIndex]['scope_closer'] > $stackPtr) {
+
             //Member variables are always ok
             if ($variableName === '$this')
+                return;
+
+            // find previous non-whitespace token. if it's a double colon, assume static class var
+            $objOperator = $phpcsFile->findPrevious(array(T_WHITESPACE), ($stackPtr - 1), null, true);
+            if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON)
                 return;
 
             $scopeIdentifier .= $tokens[$functionIndex]['scope_condition'];
