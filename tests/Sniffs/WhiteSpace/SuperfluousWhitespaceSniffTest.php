@@ -114,7 +114,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -128,7 +128,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -142,7 +142,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -156,7 +156,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -170,7 +170,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -184,7 +184,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -198,7 +198,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -212,7 +212,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -226,7 +226,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );
@@ -240,7 +240,7 @@ NOWDOC;
     {
         $this->_phpcs->process(
             array(),
-            'DWS', //Standard
+            $this->_standard,
             array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
             null
         );

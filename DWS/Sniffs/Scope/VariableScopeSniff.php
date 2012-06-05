@@ -48,7 +48,6 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
         if ($functionIndex !== false
                 && array_key_exists('scope_closer', $tokens[$functionIndex])
                 && $tokens[$functionIndex]['scope_closer'] > $stackPtr) {
-
             //Member variables are always ok
             if ($variableName === '$this')
                 return;
