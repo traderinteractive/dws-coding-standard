@@ -3,10 +3,13 @@ abstract class SniffTestCase extends PHPUnit_Framework_TestCase
 {
     protected $_phpcs;
 
+    protected $_standard;
+
     public function setUp($sniffs)
     {
+        $this->_standard = dirname(__DIR__) . '/DWS';
         $this->_phpcs = new PHP_CodeSniffer();
-        $this->_phpcs->process(array(), 'DWS', $sniffs);
+        $this->_phpcs->process(array(), $this->_standard, $sniffs);
     }
 
     protected function assertErrorMessages($expectedErrorMessages)

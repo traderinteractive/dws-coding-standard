@@ -32,10 +32,10 @@
 
         <coverage-setup database="${project.basedir}/build/coverage/database">
            <fileset dir="${project.basedir}">
-              <include name="Sniffs/**/*.php" />
+              <include name="DWS/Sniffs/**/*.php" />
            </fileset>
         </coverage-setup>
-        <phpunit codecoverage="true" printsummary="true" haltonfailure="false">
+        <phpunit codecoverage="true" printsummary="true" haltonfailure="true">
             <formatter type="xml" todir="${project.basedir}/build/logs" outfile="phpunit.xml"/>
             <batchtest>
                 <fileset dir="${project.basedir}/tests">
@@ -60,7 +60,7 @@
     </target>
 
     <target name="phpcs">
-        <phpcodesniffer haltonerror="true" showWarnings="false" tabWidth="4" standard="DWS" ignorepatterns="*.phtml">
+        <phpcodesniffer haltonerror="true" showWarnings="false" tabWidth="4" standard="${project.basedir}/DWS" ignorepatterns="*.phtml">
             <fileset dir="${project.basedir}">
                 <include name="**/*.php"/>
             </fileset>
@@ -69,7 +69,7 @@
     </target>
 
     <target name="phpcs-min">
-        <phpcodesniffer haltonerror="true" showWarnings="false" tabWidth="4" standard="DWS" ignorepatterns="*.phtml">
+        <phpcodesniffer haltonerror="true" showWarnings="false" tabWidth="4" standard="${project.basedir}/DWS" ignorepatterns="*.phtml">
             <fileset dir="${project.basedir}">
                 <include name="**/*.php"/>
             </fileset>
@@ -88,7 +88,7 @@
                 pear="false"
                 output="html:frames:earthli">
             <fileset dir="${project.basedir}">
-                <include name="Sniffs/**/*.php"/>
+                <include name="DWS/Sniffs/**/*.php"/>
             </fileset>
             <projdocfileset dir="${project.basedir}/build/docs">
                 <include name="README" />
@@ -130,16 +130,16 @@
 
     <target name="package">
 
-        <property name="version" value="0.2.0" />
+        <property name="version" value="0.2.1" />
         <property name="package" value="DWS_Coding_Standard-${version}" />
 
-        <mkdir dir="${project.basedir}/build/${package}"/>
+        <mkdir dir="${project.basedir}/build/${package}/DWS"/>
 
         <pearpkg2 name="DWS_Coding_Standard" dir="${project.basedir}">
             <option name="outputdirectory" value="${project.basedir}/build/${package}"/>
             <option name="packagefile" value="package.xml"/>
             <option name="packagedirectory" value="."/>
-            <option name="baseinstalldir" value="/PHP/CodeSniffer/Standards/DWS"/>
+            <option name="baseinstalldir" value="/PHP/CodeSniffer/Standards"/>
             <option name="channel" value="pear.traderonline.com"/>
             <option name="summary" value="DWS Coding Standards" />
             <option name="description" value="DWS Coding Standards" />
@@ -194,9 +194,9 @@
             <role extension="xml" role="php" />          
 
             <fileset dir="${project.basedir}">
-                <include name="ruleset.xml" />
-                <include name="Docs/**/*.xml" />
-                <include name="Sniffs/**/*.php" />
+                <include name="DWS/ruleset.xml" />
+                <include name="DWS/Docs/**/*.xml" />
+                <include name="DWS/Sniffs/**/*.php" />
                 <include name="tests/**/*.php" />
                 <include name="README.md" />
             </fileset>
@@ -204,9 +204,9 @@
 
         <copy todir="${project.basedir}/build/${package}">
             <fileset dir="${project.basedir}">
-                <include name="ruleset.xml" />
-                <include name="Docs/**/*.xml" />
-                <include name="Sniffs/**/*.php" />
+                <include name="DWS/ruleset.xml" />
+                <include name="DWS/Docs/**/*.xml" />
+                <include name="DWS/Sniffs/**/*.php" />
                 <include name="tests/**/*.php" />
                 <include name="README.md" />
             </fileset>
@@ -223,7 +223,7 @@
         </if>
     </target>
 
-    <target name="build" depends="clean, prepare, phplint, phpcs, phpunit-min, pdepend, phpmd, phpcpd, phpdoc, package" />
+    <target name="build" depends="clean, prepare, phplint, phpcs, phpunit, pdepend, phpmd, phpcpd, phpdoc, package" />
 
     <target name="pre-commit" depends="clean, prepare, phplint, phpcs-min" />
 
