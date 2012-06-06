@@ -304,9 +304,6 @@ NOWDOC;
         foreach ($validFiles as $fileName => $fileContents)
             $this->_phpcs->processFile($fileName, $fileContents);
 
-        $errors = $this->_phpcs->getFilesErrors();
-        $errorsText = print_r($this->_phpcs->getFilesErrors(), true);
-
         foreach ($validFiles as $fileName => $fileContents)
             $this->assertNoErrors($fileName);
     }
