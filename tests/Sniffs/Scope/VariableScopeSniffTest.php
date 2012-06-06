@@ -26,6 +26,8 @@ class DWS_Sniffs_Scope_VariableScopeSniff_Test extends SniffTestCase
 
     private $_tryCatchBrokenScope;
 
+    private $_staticVariableScope;
+
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_Scope_VariableScopeSniff'));
@@ -177,6 +179,17 @@ function foo() {
     var_dump($e);
 }
 NOWDOC;
+        $this->_staticVariableScope = <<< 'NOWDOC'
+<?php
+class penguin {
+    private function _move($valueTwo) {
+        if ($isCold === false)
+            self::$valueTwo = "swim";
+
+        echo self::$valueTwo;
+    }
+}
+NOWDOC;
     }
 
     public function testGlobalInlineIfScope()
@@ -277,6 +290,13 @@ NOWDOC;
         $this->assertErrorMessages("Variable '\$e' is in the wrong scope.");
     }
 
+    public function testStaticVariableScope()
+    {
+        $this->_phpcs->processFile('StaticVariableScope', $this->_staticVariableScope);
+
+        $this->assertNoErrors('StaticVariableScope');
+    }
+
     public function testMultipleFiles()
     {
         $brokenFiles = array(
@@ -296,6 +316,7 @@ NOWDOC;
             'SubFunctionScopePredeclared' => $this->_subFunctionScopePredeclared,
             'SameVariableNameDifferentFunctionScope' => $this->_sameVariableNameDifferentFunctionScope,
             'TryCatchScope' => $this->_tryCatchScope,
+            'StaticVariableScope' => $this->_staticVariableScope,
         );
 
         foreach ($brokenFiles as $fileName => $fileContents)
