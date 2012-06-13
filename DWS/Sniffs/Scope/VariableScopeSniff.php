@@ -64,7 +64,7 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
         if (array_key_exists($scopeIdentifier, $this->_variableScopes) === false)
             $this->_variableScopes[$scopeIdentifier] = $level;
         elseif ($this->_variableScopes[$scopeIdentifier] > $level) //Verify that the variables we've seen are not appearing in higher scopes.
-            $phpcsFile->addError("Variable '{$variableName}' is in the wrong scope.", $stackPtr, 'Found');
+            $phpcsFile->addWarning("Variable '{$variableName}' is in the wrong scope.", $stackPtr, 'Found');
     }
 
     /**
