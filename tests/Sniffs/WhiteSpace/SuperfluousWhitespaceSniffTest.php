@@ -22,7 +22,7 @@ class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff_Test extends SniffTestCas
 
     public function setUp()
     {
-        parent::setUp(array('DWS_Sniffs_Strings_DoubleQuoteUsageSniff'));
+        parent::setUp(array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'));
         $this->_spaceInBeginning = <<< 'NOWDOC'
 
 <?php
@@ -112,13 +112,6 @@ NOWDOC;
 
     public function testSpaceInBeginning()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('SpaceInBeginning', $this->_spaceInBeginning);
 
         $this->assertErrorMessages('Additional whitespace found at start of file');
@@ -126,13 +119,6 @@ NOWDOC;
 
     public function testTwoBlankLinesBeforeFunction()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('TwoBlankLinesBeforeFunction', $this->_twoBlankLinesBeforeFunction);
 
         $this->assertErrorMessages('Multiple empty lines in a row; found 2 empty lines');
@@ -140,13 +126,6 @@ NOWDOC;
 
     public function testTwoBlankLinesInFunction()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('TwoBlankLinesInFunction', $this->_twoBlankLinesInFunction);
 
         $this->assertErrorMessages('Multiple empty lines in a row; found 2 empty lines');
@@ -154,13 +133,6 @@ NOWDOC;
 
     public function testTwoBlankLinesAfterFunction()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('TwoBlankLinesAfterFunction', $this->_twoBlankLinesAfterFunction);
 
         $this->assertErrorMessages('Empty lines at end of file');
@@ -168,13 +140,6 @@ NOWDOC;
 
     public function testBlankLineAfterClass()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('BlankLineAfterClass', $this->_blankLineAfterClass);
 
         $this->assertErrorMessages('Blank line at beginning of class');
@@ -182,13 +147,6 @@ NOWDOC;
 
     public function testBlankLineBeforeEndClass()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('BlankLineBeforeEndClass', $this->_blankLineBeforeEndClass);
 
         $this->assertErrorMessages('Blank line at end of class');
@@ -196,13 +154,6 @@ NOWDOC;
 
     public function testBlankLineAfterIf()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('BlankLineAfterIf', $this->_blankLineAfterIf);
 
         $this->assertErrorMessages('Blank line at beginning of if');
@@ -210,13 +161,6 @@ NOWDOC;
 
     public function testBlankLineBeforeEndIf()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('BlankLineBeforeEndIf', $this->_blankLineBeforeEndIf);
 
         $this->assertErrorMessages('Blank line at end of if');
@@ -224,13 +168,6 @@ NOWDOC;
 
     public function testBlankLineAfterFunction()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('BlankLineAfterFunction', $this->_blankLineAfterFunction);
 
         $this->assertErrorMessages('Blank line at beginning of function');
@@ -238,13 +175,6 @@ NOWDOC;
 
     public function testBlankLineBeforeEndFunction()
     {
-        $this->_phpcs->process(
-            array(),
-            $this->_standard,
-            array('DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff'), //Sniff
-            null
-        );
-
         $this->_phpcs->processFile('BlankLineBeforeEndFunction', $this->_blankLineBeforeEndFunction);
 
         $this->assertErrorMessages('Blank line at end of function');
