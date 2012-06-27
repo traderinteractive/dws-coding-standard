@@ -1,18 +1,18 @@
 <?php
 /**
- * Makes sure that any use of Double Quotes are warranted.
+ * Makes sure that all variables embedded in strings are enclosed in braces.
  *
  * @package DWS
  * @subpackage Sniffs
  */
 
 /**
- * Makes sure that any use of Double Quotes are warranted.
+ * Makes sure that all variables embedded in strings are enclosed in braces.
  *
  * @package DWS
  * @subpackage Sniffs
  */
-class DWS_Sniffs_Strings_DoubleQuoteUsageSniff implements PHP_CodeSniffer_Sniff
+class DWS_Sniffs_Strings_EmbeddedVariablesSniff implements PHP_CodeSniffer_Sniff
 {
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -54,17 +54,23 @@ class DWS_Sniffs_Strings_DoubleQuoteUsageSniff implements PHP_CodeSniffer_Sniff
             return;
 
         // The use of variables in double quoted strings is allowed.
-        if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING)
-            foreach (token_get_all("<?php {$workingString}") as $token)
-                if (is_array($token) === true && $token[0] === T_VARIABLE)
-                    return;
-
-        $allowedStrings = array('\0', '\n', '\r', '\f', '\t', '\v', '\x', '\'');
-
-        foreach ($allowedStrings as $testChar)
-            if (strpos($workingString, $testChar) !== false)
-                return;
-
-        $phpcsFile->addError("String {$workingString} does not require double quotes; use single quotes instead", $stackPtr, 'NotRequired');
+        if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING) {
+            $openBraces = 0;
+            foreach (token_get_all("<?php {$workingString}") as $token) {
+                if (is_array($token) === true) {
+                    if ($token[0] == T_CURLY_OPEN)
+                        ++$openBraces;
+                    elseif ($token[0] == T_VARIABLE && $openBraces < 1) {
+                        $phpcsFile->addError(
+                            "String {$workingString} has a variable embedded without being delimited by braces",
+                            $stackPtr,
+                            'ContainsNonDelimitedVariable',
+                            array($token[1])
+                        );
+                    }
+                } elseif ($token == '}')
+                    --$openBraces;
+            }
+        }
     }
 }
