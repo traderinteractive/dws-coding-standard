@@ -30,11 +30,11 @@
         </copy>
     </target>
 
-    <target name="phpunit" depends="generate-phpunit-config">
+    <target name="phpunit" depends="generate-phpunit-config, prepare">
         <exec command="phpunit" dir="${project.basedir}/tests" checkreturn="true"/>
     </target>
 
-    <target name="phpcs">
+    <target name="phpcs" depends="prepare">
         <phpcodesniffer haltonerror="true" showWarnings="false" tabWidth="4" standard="${project.basedir}/DWS" ignorepatterns="*.phtml">
             <fileset dir="${project.basedir}">
                 <include name="**/*.php"/>
@@ -51,7 +51,7 @@
         </phpcodesniffer>
     </target>
 
-    <target name="phpdoc">
+    <target name="phpdoc" depends="prepare">
         <phpdoc title="DWS Sniff Documentation"
                 target="${project.basedir}/build/docs/sniffs"
                 sourcecode="true"
@@ -71,7 +71,7 @@
         </phpdoc>
     </target>
 
-    <target name="pdepend">
+    <target name="pdepend" depends="prepare">
         <phpdepend>
             <fileset dir="${project.basedir}">
                 <include name="**/*.php"/>
@@ -85,7 +85,7 @@
         </phpdepend>
     </target>
 
-    <target name="phpmd">
+    <target name="phpmd" depends="prepare">
         <phpmd rulesets="codesize,unusedcode,naming">
             <fileset dir="${project.basedir}">
                 <include name="**/*.php"/>
@@ -94,7 +94,7 @@
         </phpmd>
     </target>
 
-    <target name="phpcpd">
+    <target name="phpcpd" depends="prepare">
         <phpcpd>
             <fileset dir="${project.basedir}">
                 <include name="**/*.php"/>
@@ -103,7 +103,7 @@
         </phpcpd>
     </target>
 
-    <target name="package">
+    <target name="package" depends="prepare">
 
         <property name="version" value="0.3.0" />
         <property name="package" value="DWS_Coding_Standard-${version}" />
@@ -204,7 +204,7 @@
         </if>
     </target>
 
-    <target name="build" depends="clean, prepare, phplint, phpcs, phpunit, pdepend, phpmd, phpcpd, phpdoc, package" />
+    <target name="build" depends="clean, phplint, phpcs, phpunit, pdepend, phpmd, phpcpd, phpdoc, package" />
 
     <target name="pre-commit" depends="phplint, phpcs-min" />
 
