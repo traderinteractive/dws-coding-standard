@@ -1,0 +1,21 @@
+<documentation title="Embedded Variables">
+    <standard>
+    <![CDATA[
+    Variables embedded in strings should be delimited by braces.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Braces correctly delimiting a variable.">
+        <![CDATA[
+$world = 'World';
+$foo = "Hello, <em>{</em>$world<em>}</em>";
+        ]]>
+        </code>
+        <code title="Invalid: Variable embedded in string without delimiting braces.">
+        <![CDATA[
+$world = 'World';
+$foo = "Hello, <em>$world</em>";
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>
