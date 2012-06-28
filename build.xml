@@ -206,6 +206,6 @@
 
     <target name="build" depends="clean, prepare, phplint, phpcs, phpunit, pdepend, phpmd, phpcpd, phpdoc, package" />
 
-    <target name="pre-commit" depends="clean, prepare, phplint, phpcs-min" />
+    <target name="pre-commit" depends="phplint, phpcs-min" />
 
 </project>
