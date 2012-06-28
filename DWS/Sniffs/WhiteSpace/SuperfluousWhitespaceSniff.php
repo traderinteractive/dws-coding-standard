@@ -64,9 +64,9 @@ class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSniffe
             $classClose = $tokens[$stackPtr]['scope_closer'];
             $structureType = strtolower(str_replace('T_', '', $tokens[$stackPtr]['type']));
             if ($tokens[$classOpen + 1]['content'] === $phpcsFile->eolChar && $tokens[$classOpen + 2]['content'] === $phpcsFile->eolChar)
-                $phpcsFile->addError("Blank line at beginning of $structureType", $classOpen + 2, 'EmptyLines');
+                $phpcsFile->addError("Blank line at beginning of {$structureType}", $classOpen + 2, 'EmptyLines');
             if ($tokens[$classClose - 1]['content'] === $phpcsFile->eolChar && $tokens[$classClose - 2]['content'] === $phpcsFile->eolChar)
-                $phpcsFile->addError("Blank line at end of $structureType", $classClose - 1, 'EmptyLines');
+                $phpcsFile->addError("Blank line at end of {$structureType}", $classClose - 1, 'EmptyLines');
         } else {
             //Check for end of line whitespace.
             if (strpos($tokens[$stackPtr]['content'], $phpcsFile->eolChar) === false)
@@ -91,7 +91,7 @@ class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSniffe
                 } else {
                     $lines = $tokens[$next]['line'] - $tokens[$stackPtr]['line'];
                     if ($lines > 1)
-                        $phpcsFile->addError("Multiple empty lines in a row; found $lines empty lines", $stackPtr, 'EmptyLines');
+                        $phpcsFile->addError("Multiple empty lines in a row; found {$lines} empty lines", $stackPtr, 'EmptyLines');
                 }
             }
         }

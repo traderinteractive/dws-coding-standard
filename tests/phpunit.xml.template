@@ -1,0 +1,16 @@
+<phpunit colors="true">
+  <testsuite name="DWS Coding Standard Tests">
+    <directory>@@basedir@@/tests</directory>
+  </testsuite>
+  <filter>
+    <whitelist>
+      <directory suffix=".php">@@basedir@@/DWS</directory>
+    </whitelist>
+  </filter>
+
+  <logging>
+    <log type="coverage-html" target="@@basedir@@/build/coverage" charset="UTF-8" yui="true" highlight="true" lowupperbound="50" highlowerbound="80" />
+    <log type="junit" target="@@basedir@@/build/logs/phpunit.xml" />
+    <log type="coverage-clover" target="@@basedir@@/build/logs/phpunit.coverage.xml"/>
+  </logging>
+</phpunit>
