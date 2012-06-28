@@ -20,43 +20,18 @@
         </phplint>
     </target>
 
-    <target name="phpunit">
-        <if>
-            <not>
-                <isset property="pear.data.dir" />
-            </not>
-            <then>
-                <propertyprompt propertyName="pear.data.dir" defaultValue="/usr/share/php/data" promptText="Enter your pear data dir" />
-            </then>
-        </if>
-
-        <coverage-setup database="${project.basedir}/build/coverage/database">
-           <fileset dir="${project.basedir}">
-              <include name="DWS/Sniffs/**/*.php" />
-           </fileset>
-        </coverage-setup>
-        <phpunit codecoverage="true" printsummary="true" haltonfailure="true">
-            <formatter type="xml" todir="${project.basedir}/build/logs" outfile="phpunit.xml"/>
-            <batchtest>
-                <fileset dir="${project.basedir}/tests">
-                    <include name="**/*Test.php" />
-                </fileset>
-            </batchtest>
-        </phpunit>
-        <coverage-report outfile="${project.basedir}/build/logs/phpunit.coverage.xml">
-            <report styledir="${pear.data.dir}/phing/etc"
-                    todir="${project.basedir}/build/coverage"/>
-        </coverage-report>
+    <target name="generate-phpunit-config">
+        <copy file="${project.basedir}/tests/phpunit.xml.template" tofile="${project.basedir}/tests/phpunit.xml">
+            <filterchain>
+                <replacetokens begintoken="@@" endtoken="@@">
+                    <token key="basedir" value="${project.basedir}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
     </target>
 
-    <target name="phpunit-min">
-        <phpunit codecoverage="false" printsummary="true" haltonfailure="true">
-            <batchtest>
-                <fileset dir="${project.basedir}/tests">
-                    <include name="**/*Test.php" />
-                </fileset>
-            </batchtest>
-        </phpunit>
+    <target name="phpunit" depends="generate-phpunit-config">
+        <exec command="phpunit" dir="${project.basedir}/tests" checkreturn="true"/>
     </target>
 
     <target name="phpcs">
@@ -188,6 +163,12 @@
                 <element>
                     <element key="channel" value="pear.php.net" />
                     <element key="name" value="PHP_CodeSniffer" />
+                </element>
+                <element>
+                    <element key="channel" value="pear.phpunit.de" />
+                    <element key="name" value="PHPUnit" />
+                    <element key="min" value="3.4.15" />
+                    <element key="max" value="3.4.15" />
                 </element>
             </mapping>
 
