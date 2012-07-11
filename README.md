@@ -58,6 +58,7 @@
     * [Consistent Variable Scoping](#consistent-variable-scoping)
 * [Strings](#strings)
     * [Echos](#echos)
+    * [Embedded Variables](#embedded-variables)
     * [Unnecessary Concatenation](#unnecessary-concatenation)
     * [Double Quote Usage](#double-quote-usage)
 * [Whitespace](#whitespace)
@@ -343,7 +344,7 @@ Valid:
 ```php
 <?php
 foreach ($ar['nested'] as $key => $value) {
-    echo "$key: $value\n";
+    echo "{$key}: {$value}\n";
 }
 ```
 
@@ -351,7 +352,7 @@ Invalid:
 ```php
 <?php
 foreach ( $ar['nested']as$key=>$value ) {
-    echo "$key: $value\n";
+    echo "{$key}: {$value}\n";
 }
 ```
 
@@ -895,6 +896,22 @@ Invalid:
 echo("Hello\n");
 ```
 
+### Embedded Variables
+Embedded variables in strings should be delimited by braces.
+
+Valid:
+```php
+<?php
+$world = 'World';
+echo "Hello, {$world}\n";
+```
+
+Invalid:
+```php
+<?php
+echo("Hello, $world\n");
+```
+
 ### Unnecessary Concatenation
 Strings should not be concatenated to other plain strings.
 
@@ -917,7 +934,7 @@ Valid:
 ```php
 <?php
 $world = 'World';
-$foo = "Hello, $world";
+$foo = "Hello, {$world}";
 ```
 
 Invalid:
