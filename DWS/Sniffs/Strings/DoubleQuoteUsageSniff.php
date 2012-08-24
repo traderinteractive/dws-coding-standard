@@ -37,33 +37,42 @@ class DWS_Sniffs_Strings_DoubleQuoteUsageSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
 
         // We are only interested in the first token in a multi-line string.
-        if ($tokens[$stackPtr]['code'] === $tokens[$stackPtr - 1]['code'])
+        if ($tokens[$stackPtr]['code'] === $tokens[$stackPtr - 1]['code']) {
             return;
+        }
 
         $workingString = $tokens[$stackPtr]['content'];
-        for ($i = $stackPtr + 1; $tokens[$i]['code'] === $tokens[$stackPtr]['code']; ++$i)
+        for ($i = $stackPtr + 1; $tokens[$i]['code'] === $tokens[$stackPtr]['code']; ++$i) {
             $workingString .= $tokens[$i]['content'];
+        }
 
         // Check if it's a double quoted string.
-        if (strpos($workingString, '"') === false)
+        if (strpos($workingString, '"') === false) {
             return;
+        }
 
         // Make sure it's not a part of a string started in a previous line.
         // If it is, then we have already checked it.
-        if ($workingString[0] !== '"')
+        if ($workingString[0] !== '"') {
             return;
+        }
 
         // The use of variables in double quoted strings is allowed.
-        if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING)
-            foreach (token_get_all("<?php {$workingString}") as $token)
-                if (is_array($token) === true && $token[0] === T_VARIABLE)
+        if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING) {
+            foreach (token_get_all("<?php {$workingString}") as $token) {
+                if (is_array($token) === true && $token[0] === T_VARIABLE) {
                     return;
+                }
+            }
+        }
 
         $allowedStrings = array('\0', '\n', '\r', '\f', '\t', '\v', '\x', '\'');
 
-        foreach ($allowedStrings as $testChar)
-            if (strpos($workingString, $testChar) !== false)
+        foreach ($allowedStrings as $testChar) {
+            if (strpos($workingString, $testChar) !== false) {
                 return;
+            }
+        }
 
         $phpcsFile->addError("String {$workingString} does not require double quotes; use single quotes instead", $stackPtr, 'NotRequired');
     }
