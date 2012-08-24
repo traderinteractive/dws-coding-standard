@@ -55,7 +55,6 @@
     <rule ref="Squiz.Strings.EchoedStrings" />
     <rule ref="Generic.Strings.UnnecessaryStringConcat" />
     <rule ref="Squiz.WhiteSpace.CastSpacing" />
-    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing" />
     <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
     <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace" />
     <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing" />
