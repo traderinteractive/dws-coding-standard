@@ -298,16 +298,19 @@ NOWDOC;
             'TryCatchScope' => $this->_tryCatchScope,
         );
 
-        foreach ($brokenFiles as $fileName => $fileContents)
+        foreach ($brokenFiles as $fileName => $fileContents) {
             $this->_phpcs->processFile($fileName, $fileContents);
+        }
 
-        foreach ($validFiles as $fileName => $fileContents)
+        foreach ($validFiles as $fileName => $fileContents) {
             $this->_phpcs->processFile($fileName, $fileContents);
+        }
 
         $errors = $this->_phpcs->getFilesErrors();
         $errorsText = print_r($this->_phpcs->getFilesErrors(), true);
 
-        foreach ($validFiles as $fileName => $fileContents)
+        foreach ($validFiles as $fileName => $fileContents) {
             $this->assertNoErrors($fileName);
+        }
     }
 }

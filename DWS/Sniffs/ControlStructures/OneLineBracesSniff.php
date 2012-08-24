@@ -36,7 +36,8 @@ class DWS_Sniffs_ControlStructures_OneLineBracesSniff implements PHP_CodeSniffer
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (array_key_exists('scope_closer', $tokens[$stackPtr]) === false)
+        if (array_key_exists('scope_closer', $tokens[$stackPtr]) === false) {
             $phpcsFile->addError('Braces should be used for this control structure.', $stackPtr, 'NotRequired');
+        }
     }
 }
