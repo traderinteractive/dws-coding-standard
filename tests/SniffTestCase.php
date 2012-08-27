@@ -14,11 +14,13 @@ abstract class SniffTestCase extends PHPUnit_Framework_TestCase
 
     protected function assertErrorMessages($expectedErrorMessages)
     {
-        if (is_string($expectedErrorMessages) === true)
+        if (is_string($expectedErrorMessages) === true) {
             $expectedErrorMessages = array($expectedErrorMessages);
+        }
 
-        foreach ($expectedErrorMessages as $expectedMessage)
+        foreach ($expectedErrorMessages as $expectedMessage) {
             $this->assertContains($expectedMessage, print_r($this->_phpcs->getFilesErrors(), true));
+        }
     }
 
     protected function assertNoErrors($fileName)
