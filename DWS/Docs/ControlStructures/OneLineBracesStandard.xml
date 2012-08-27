@@ -1,21 +1,21 @@
 <documentation title="One Line Control Structures">
     <standard>
     <![CDATA[
-    Control structures that don't require braces should not use them.
+    One Line Control structures should use braces.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: No braces.">
         <![CDATA[
-if ($value === true)
+if ($value === true) <em>{</em>
     echo 3;
+<em>}</em>
 ]]>
         </code>
         <code title="Invalid: Braces.">
         <![CDATA[
-if ($value === true) <em>{</em>
+if ($value === true)
     echo 3;
-<em>}</em>
 ]]>
         </code>
     </code_comparison>

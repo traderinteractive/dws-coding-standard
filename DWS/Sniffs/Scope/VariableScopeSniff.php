@@ -14,8 +14,8 @@
  */
 class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_AbstractVariableSniff
 {
-    /** 
-     * This stores the first scope level that a variable is encountered 
+    /**
+     * This stores the first scope level that a variable is encountered
      */
     private $_variableScopes = array();
 
@@ -38,33 +38,37 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
 
         //Inline scope openers do not increment the level value
         $scopeOpenDistance = $tokens[$stackPtr]['line'] - $tokens[$lastScopeOpen]['line'];
-        if (
-            in_array($tokens[$lastScopeOpen]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners) === true
+        if (in_array($tokens[$lastScopeOpen]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners) === true
             && ($scopeOpenDistance === 1 || $scopeOpenDistance === 0)//Include the variables in the condition
             && $tokens[$stackPtr]['level'] === $tokens[$lastScopeOpen]['level']
-           )
+           ) {
             ++$level;
+        }
 
         if ($functionIndex !== false
                 && array_key_exists('scope_closer', $tokens[$functionIndex])
                 && $tokens[$functionIndex]['scope_closer'] > $stackPtr) {
             //Member variables are always ok
-            if ($variableName === '$this')
+            if ($variableName === '$this') {
                 return;
+            }
 
             // find previous non-whitespace token. if it's a double colon, assume static class var
             $objOperator = $phpcsFile->findPrevious(array(T_WHITESPACE), ($stackPtr - 1), null, true);
-            if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON)
+            if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON) {
                 return;
+            }
 
             $scopeIdentifier .= $tokens[$functionIndex]['scope_condition'];
         }
 
         //If this is the first time we've seen this variable in this file/function store the scope depth.
-        if (array_key_exists($scopeIdentifier, $this->_variableScopes) === false)
+        if (array_key_exists($scopeIdentifier, $this->_variableScopes) === false) {
             $this->_variableScopes[$scopeIdentifier] = $level;
-        elseif ($this->_variableScopes[$scopeIdentifier] > $level) //Verify that the variables we've seen are not appearing in higher scopes.
+        } elseif ($this->_variableScopes[$scopeIdentifier] > $level) {
+            //Verify that the variables we've seen are not appearing in higher scopes.
             $phpcsFile->addWarning("Variable '{$variableName}' is in the wrong scope.", $stackPtr, 'Found');
+        }
     }
 
     /**

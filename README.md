@@ -393,21 +393,21 @@ If ($test)
 ```
 
 ### One Line Control Structures
-Control structures that don't require braces should not use them.
+One Line Control structures should use braces.
 
 Valid:
-```php
-<?php
-if ($value === true)
-    echo 3;
-```
-
-Invalid:
 ```php
 <?php
 if ($value === true) {
     echo 3;
 }
+```
+
+Invalid:
+```php
+<?php
+if ($value === true)
+    echo 3;
 ```
 
 ## Files

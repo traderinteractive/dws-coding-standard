@@ -37,30 +37,34 @@ class DWS_Sniffs_Strings_EmbeddedVariablesSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
 
         // We are only interested in the first token in a multi-line string.
-        if ($tokens[$stackPtr]['code'] === $tokens[$stackPtr - 1]['code'])
+        if ($tokens[$stackPtr]['code'] === $tokens[$stackPtr - 1]['code']) {
             return;
+        }
 
         $workingString = $tokens[$stackPtr]['content'];
-        for ($i = $stackPtr + 1; $tokens[$i]['code'] === $tokens[$stackPtr]['code']; ++$i)
+        for ($i = $stackPtr + 1; $tokens[$i]['code'] === $tokens[$stackPtr]['code']; ++$i) {
             $workingString .= $tokens[$i]['content'];
+        }
 
         // Check if it's a double quoted string.
-        if (strpos($workingString, '"') === false)
+        if (strpos($workingString, '"') === false) {
             return;
+        }
 
         // Make sure it's not a part of a string started in a previous line.
         // If it is, then we have already checked it.
-        if ($workingString[0] !== '"')
+        if ($workingString[0] !== '"') {
             return;
+        }
 
         // The use of variables in double quoted strings is allowed.
         if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING) {
             $openBraces = 0;
             foreach (token_get_all("<?php {$workingString}") as $token) {
                 if (is_array($token) === true) {
-                    if ($token[0] == T_CURLY_OPEN)
+                    if ($token[0] == T_CURLY_OPEN) {
                         ++$openBraces;
-                    elseif ($token[0] == T_VARIABLE && $openBraces < 1) {
+                    } elseif ($token[0] == T_VARIABLE && $openBraces < 1) {
                         $phpcsFile->addError(
                             "String {$workingString} has a variable embedded without being delimited by braces",
                             $stackPtr,
@@ -68,8 +72,9 @@ class DWS_Sniffs_Strings_EmbeddedVariablesSniff implements PHP_CodeSniffer_Sniff
                             array($token[1])
                         );
                     }
-                } elseif ($token == '}')
+                } elseif ($token == '}') {
                     --$openBraces;
+                }
             }
         }
     }

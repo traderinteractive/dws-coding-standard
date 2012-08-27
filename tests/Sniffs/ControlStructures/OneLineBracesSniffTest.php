@@ -27,14 +27,12 @@ NOWDOC;
     public function testSingleLineIfBraces()
     {
         $this->_phpcs->processFile('SingleLineIfBraces', $this->_singleLineIfBraces);
-
-        $this->assertErrorMessages('Braces should not be used for this control structure.');
+        $this->assertNoErrors('SingleLineIfBraces');
     }
 
     public function testSingleLineIfNoBraces()
     {
         $this->_phpcs->processFile('SingleLineIfNoBraces', $this->_singleLineIfNoBraces);
-
-        $this->assertNoErrors('SingleLineIfNoBraces');
+        $this->assertErrorMessages('Braces should be used for this control structure.');
     }
 }
