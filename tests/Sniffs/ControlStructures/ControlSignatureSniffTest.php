@@ -12,6 +12,11 @@ class DWS_Sniffs_ControlStructures_ControlSignatureSniff_Test extends SniffTestC
 
     private $_brokenDoWhile;
 
+    /**
+     * Setup the test fixture
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_ControlStructures_ControlSignatureSniff'));
@@ -43,6 +48,11 @@ do {
 NOWDOC;
     }
 
+    /**
+     * Verify that a missing space in front of a structured if reports an error
+     *
+     * @return void
+     */
     public function testStructuredIfSpaceMissing()
     {
         $this->_phpcs->processFile('StructuredIfSpaceMissing', $this->_structuredIfSpaceMissingFailure);
@@ -50,6 +60,11 @@ NOWDOC;
         $this->assertErrorMessages('Expected "if (...) {\n"; found "if(...) {\n"');
     }
 
+    /**
+     * Verify that correct structured if spacing does not report an error
+     *
+     * @return void
+     */
     public function testStructuredIfSpaceMissingPass()
     {
         $this->_phpcs->processFile('StructuredIfSpaceMissingPass', $this->_structuredIfSpaceMissingPass);
@@ -57,6 +72,11 @@ NOWDOC;
         $this->assertNoErrors('StructuredIfSpaceMissingPass');
     }
 
+    /**
+     * Verify that do whiles are allowed
+     *
+     * @return void
+     */
     public function testDoWhile()
     {
         $this->_phpcs->processFile('DoWhile', $this->_doWhile);
@@ -64,6 +84,11 @@ NOWDOC;
         $this->assertNoErrors('DoWhile');
     }
 
+    /**
+     * Verify that broken do while's still fail
+     *
+     * @return void
+     */
     public function testBrokenDoWhile()
     {
         $this->_phpcs->processFile('BrokenDoWhile', $this->_brokenDoWhile);

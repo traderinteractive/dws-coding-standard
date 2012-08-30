@@ -1,0 +1,30 @@
+<documentation title="Function Comments">
+    <standard>
+    <![CDATA[
+    All functions must be properly documented.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Function is commented properly.">
+        <![CDATA[
+<em>/**
+ * Echo $value
+ *
+ * @param string $value The value to echo
+ *
+ * @return void
+ */</em>
+function printMe($value) {
+    echo $value;
+}
+]]>
+        </code>
+        <code title="Invalid: No function comment.">
+        <![CDATA[
+function printMe($value) {
+    echo $value;
+}
+]]>
+        </code>
+    </code_comparison>
+</documentation>

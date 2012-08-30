@@ -318,6 +318,32 @@ Invalid:
 // TODO: Fix this!
 ```
 
+### Function comments
+All functions must be properly documented.
+
+Valid:
+```php
+<?php
+/**
+ * Echo $value
+ *
+ * @param string $value The value to echo
+ *
+ * @return void
+ */
+function printMe($value) {
+    echo $value;
+}
+```
+
+Invalid: No function comment.
+```php
+<?php
+function printMe($value) {
+    echo $value;
+}
+```
+
 ## Control Structures
 
 ### Control Signatures

@@ -20,6 +20,11 @@ class DWS_Sniffs_Strings_EmbeddedVariablesSniff_Test extends SniffTestCase
 
     private $_delimitedMultilineString;
 
+    /**
+     * Setup the test fixture
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_Strings_EmbeddedVariablesSniff'));
@@ -83,6 +88,11 @@ $foo = "Hello,
 NOWDOC;
     }
 
+    /**
+     * Verify that a variable in a string, not delimited by braces reports an error.
+     *
+     * @return void
+     */
     public function testUndelimitedPlainVariable()
     {
         $this->_phpcs->processFile('UndelimitedPlainVariable', $this->_undelimitedPlainVariable);
@@ -90,6 +100,11 @@ NOWDOC;
         $this->assertErrorMessages('String "Hello, $world" has a variable embedded without being delimited by braces');
     }
 
+    /**
+     * Verify that an array access in a string, not delimited by braces reports an error.
+     *
+     * @return void
+     */
     public function testUndelimitedArrayAccess()
     {
         $this->_phpcs->processFile('UndelimitedArrayAccess', $this->_undelimitedArrayAccess);
@@ -97,6 +112,11 @@ NOWDOC;
         $this->assertErrorMessages('String "Hello, $world[place]" has a variable embedded without being delimited by braces');
     }
 
+    /**
+     * Verify that an object access in a string, not delimited by braces reports an error.
+     *
+     * @return void
+     */
     public function testUndelimitedObjectAccess()
     {
         $this->_phpcs->processFile('UndelimitedObjectAccess', $this->_undelimitedObjectAccess);
@@ -104,6 +124,11 @@ NOWDOC;
         $this->assertErrorMessages('String "Hello, $world->place" has a variable embedded without being delimited by braces');
     }
 
+    /**
+     * Verify that a variable in a multiline string, not delimited by braces reports an error.
+     *
+     * @return void
+     */
     public function testUndelimitedMultilineString()
     {
         $this->_phpcs->processFile('UndelimitedMultilineString', $this->_undelimitedMultilineString);
@@ -111,6 +136,11 @@ NOWDOC;
         $this->assertErrorMessages("String \"Hello,\n\$world\" has a variable embedded without being delimited by braces");
     }
 
+    /**
+     * Verify that a variable in a string, delimited by braces does not report an error.
+     *
+     * @return void
+     */
     public function testDelimitedPlainVariable()
     {
         $this->_phpcs->processFile('delimitedPlainVariable', $this->_delimitedPlainVariable);
@@ -118,6 +148,11 @@ NOWDOC;
         $this->assertNoErrors('delimitedPlainVariable');
     }
 
+    /**
+     * Verify that an array access in a string, delimited by braces does not report an error.
+     *
+     * @return void
+     */
     public function testDelimitedArrayAccess()
     {
         $this->_phpcs->processFile('delimitedArrayAccess', $this->_delimitedArrayAccess);
@@ -125,6 +160,11 @@ NOWDOC;
         $this->assertNoErrors('delimitedArrayAccess');
     }
 
+    /**
+     * Verify that an object access in a string, delimited by braces does not report an error.
+     *
+     * @return void
+     */
     public function testDelimitedObjectAccess()
     {
         $this->_phpcs->processFile('delimitedObjectAccess', $this->_delimitedObjectAccess);
@@ -132,6 +172,11 @@ NOWDOC;
         $this->assertNoErrors('delimitedObjectAccess');
     }
 
+    /**
+     * Verify that a variable in a multiline string, delimited by braces does not report an error.
+     *
+     * @return void
+     */
     public function testDelimitedMultilineString()
     {
         $this->_phpcs->processFile('delimitedMultilineString', $this->_delimitedMultilineString);

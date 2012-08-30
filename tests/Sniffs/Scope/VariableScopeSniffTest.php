@@ -26,6 +26,11 @@ class DWS_Sniffs_Scope_VariableScopeSniff_Test extends SniffTestCase
 
     private $_tryCatchBrokenScope;
 
+    /**
+     * Set up the test fixture
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_Scope_VariableScopeSniff'));
@@ -179,6 +184,11 @@ function foo() {
 NOWDOC;
     }
 
+    /**
+     * Verify that a variable in a global if scope should not be used in a higher scope.
+     *
+     * @return void
+     */
     public function testGlobalInlineIfScope()
     {
         $this->_phpcs->processFile('GlobalInlineIfScope', $this->_globalInlineIfScope);
@@ -186,6 +196,11 @@ NOWDOC;
         $this->assertErrorMessages("Variable '\$valueTwo' is in the wrong scope.");
     }
 
+    /**
+     * Verify that a variable in a global if scope can be used in a higher scope if it was previously declared.
+     *
+     * @return void
+     */
     public function testGlobalInlineIfScopePredeclared()
     {
         $this->_phpcs->processFile('GlobalInlineIfScopePredeclared', $this->_globalInlineIfScopePredeclared);
@@ -193,6 +208,11 @@ NOWDOC;
         $this->assertNoErrors('GlobalInlineIfScopePredeclared');
     }
 
+    /**
+     * Verify that a variable in a global structured if scope should not be used in a higher scope.
+     *
+     * @return void
+     */
     public function testGlobalStructuredIfScope()
     {
         $this->_phpcs->processFile('GlobalStructuredIfScope', $this->_globalStructuredIfScope);
@@ -200,6 +220,11 @@ NOWDOC;
         $this->assertErrorMessages("Variable '\$valueTwo' is in the wrong scope.");
     }
 
+    /**
+     * Verify that a variable in a global structured if scope can be used in a higher scope if it was previously declared.
+     *
+     * @return void
+     */
     public function testGlobalStructuredIfScopePredeclared()
     {
         $this->_phpcs->processFile('GlobalStructuredIfScopePredeclared', $this->_globalStructuredIfScopePredeclared);
@@ -207,6 +232,11 @@ NOWDOC;
         $this->assertNoErrors('GlobalStructuredIfScopePredeclared');
     }
 
+    /**
+     * Verify that a variable in a member function if scope should not be used in a higher scope.
+     *
+     * @return void
+     */
     public function testMemberFunctionIfScope()
     {
         $this->_phpcs->processFile('MemberFunctionIfScope', $this->_memberFunctionIfScope);
@@ -214,6 +244,11 @@ NOWDOC;
         $this->assertErrorMessages("Variable '\$valueTwo' is in the wrong scope.");
     }
 
+    /**
+     * Verify that a variable in a function if scope can be used in a higher scope if it was previously declared.
+     *
+     * @return void
+     */
     public function testMemberFunctionIfScopePredeclared()
     {
         $this->_phpcs->processFile('MemberFunctionIfScopePredeclared', $this->_memberFunctionIfScopePredeclared);
@@ -221,6 +256,11 @@ NOWDOC;
         $this->assertNoErrors('MemberFunctionIfScopePredeclared');
     }
 
+    /**
+     * Verify that a member variable can be used in any class scope.
+     *
+     * @return void
+     */
     public function testMemberVariableScope()
     {
         $this->_phpcs->processFile('MemberVariableScope', $this->_memberVariableScope);
@@ -228,6 +268,11 @@ NOWDOC;
         $this->assertNoErrors('MemberVariableScope');
     }
 
+    /**
+     * Verify that a variable of the same name can be used in unrelated scopes.
+     *
+     * @return void
+     */
     public function testSameVariableNameDifferentFunctionScope()
     {
         $this->_phpcs->processFile('SameVariableNameDifferentFunctionScope', $this->_sameVariableNameDifferentFunctionScope);
@@ -235,6 +280,11 @@ NOWDOC;
         $this->assertNoErrors('SameVariableNameDifferentFunctionScope');
     }
 
+    /**
+     * Verify that a parameter variable can be used in the function scope.
+     *
+     * @return void
+     */
     public function testMemberFunctionParameterScope()
     {
         $this->_phpcs->processFile('MemberFunctionParameterScope', $this->_memberFunctionParameterScope);
@@ -242,6 +292,11 @@ NOWDOC;
         $this->assertNoErrors('MemberFunctionParameterScope');
     }
 
+    /**
+     * Verify that a variable in a function if scope should not be used in a higher scope.
+     *
+     * @return void
+     */
     public function testSubFunctionScope()
     {
         $this->_phpcs->processFile('SubFunctionScope', $this->_subFunctionScope);
@@ -256,6 +311,11 @@ NOWDOC;
         );
     }
 
+    /**
+     * Verify that a variable in a function if scope can be used in a higher scope if it was previously declared.
+     *
+     * @return void
+     */
     public function testSubFunctionScopePredeclared()
     {
         $this->_phpcs->processFile('SubFunctionScopePredeclared', $this->_subFunctionScopePredeclared);
@@ -263,6 +323,11 @@ NOWDOC;
         $this->assertNoErrors('SubFunctionScopePredeclared');
     }
 
+    /**
+     * Verify that a variable in a catch scope can be used in the catch scope.
+     *
+     * @return void
+     */
     public function testTryCatchScope()
     {
         $this->_phpcs->processFile('TryCatchScope', $this->_tryCatchScope);
@@ -270,6 +335,11 @@ NOWDOC;
         $this->assertNoErrors('TryCatchScope');
     }
 
+    /**
+     * Verify that a variable in a catch scope can not be used outside the catch scope.
+     *
+     * @return void
+     */
     public function testTryCatchBrokenScope()
     {
         $this->_phpcs->processFile('TryCatchBrokenScope', $this->_tryCatchBrokenScope);
@@ -277,6 +347,11 @@ NOWDOC;
         $this->assertErrorMessages("Variable '\$e' is in the wrong scope.");
     }
 
+    /**
+     * Verify that the variables from other files are independent.
+     *
+     * @return void
+     */
     public function testMultipleFiles()
     {
         $brokenFiles = array(
