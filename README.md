@@ -137,8 +137,9 @@ Control Structures with empty bodies are not allowed.
 Valid:
 ```php
 <?php
-if ($test)
+if ($test) {
     $var = 1;
+}
 ```
 
 Invalid:
@@ -155,15 +156,17 @@ For loops that only have a second expression are not allowed as they should be c
 Valid:
 ```php
 <?php
-while ($test)
+while ($test) {
     echo "Hello\n";
+}
 ```
 
 Invalid:
 ```php
 <?php
-for (;$test;)
+for (;$test;) {
     echo "Hello\n";
+}
 ```
 
 ### Unconditional If Statements
@@ -172,15 +175,17 @@ If statements that always evaluate to true or false should not be used.
 Valid:
 ```php
 <?php
-if ($test)
+if ($test) {
     $var = 1;
+}
 ```
 
 Invalid:
 ```php
 <?php
-if (true)
+if (true) {
     $var = 1;
+}
 ```
 
 ### Unnecessary Final Modifiers
@@ -381,15 +386,17 @@ The php keywords `if`, `else`, `elseif`, `foreach`, `for`, `do`, `switch`, `whil
 Valid:
 ```php
 <?php
-if ($test)
+if ($test) {
     $var = 1;
+}
 ```
 
 Invalid:
 ```php
 <?php
-If ($test)
+If ($test) {
     $var = 1;
+}
 ```
 
 ### One Line Control Structures
@@ -802,15 +809,17 @@ All php builtin functions should be called lowercase.
 Valid:
 ```php
 <?php
-if (isset($foo))
+if (isset($foo)) {
     echo "Hello\n";
+}
 ```
 
 Invalid:
 ```php
 <?php
-if (IsSet($foo))
+if (IsSet($foo)) {
     echo "Hello\n";
+}
 ```
 
 ### Silenced Errors
@@ -819,15 +828,17 @@ Suppressing errors is not allowed.
 Valid:
 ```php
 <?php
-if (isset($foo) && $foo)
+if (isset($foo) && $foo) {
     echo "Hello\n";
+}
 ```
 
 Invalid:
 ```php
 <?php
-if (@$foo)
+if (@$foo) {
     echo "Hello\n";
+}
 ```
 
 ## Scope
@@ -866,16 +877,18 @@ Valid:
 ```php
 <?php
 $value = null;
-if ($i < 3)
+if ($i < 3) {
     $value = 3;
+}
 echo $value;
 ```
 
 Invalid:
 ```php
 <?php
-if ($i < 3)
+if ($i < 3) {
     $value = 3;
+}
 echo $value;
 ```
 
@@ -1042,15 +1055,17 @@ Logical operators should have one space before and after them.
 Valid:
 ```php
 <?php
-if ($foo && $bar)
+if ($foo && $bar) {
     echo "Hello\n";
+}
 ```
 
 Invalid:
 ```php
 <?php
-if ($foo&&$bar)
+if ($foo&&$bar) {
     echo "Hello\n";
+}
 ```
 
 ### Object Operators
