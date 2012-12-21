@@ -4,10 +4,6 @@ require_once __DIR__ . '/../../SniffTestCase.php';
 
 class DWS_Sniffs_ControlStructures_ControlSignatureSniff_Test extends SniffTestCase
 {
-    private $_inlineIfSpaceMissingFailure;
-
-    private $_inlineIfSpaceMissingPass;
-
     private $_structuredIfSpaceMissingFailure;
 
     private $_structuredIfSpaceMissingPass;
@@ -15,16 +11,6 @@ class DWS_Sniffs_ControlStructures_ControlSignatureSniff_Test extends SniffTestC
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_ControlStructures_ControlSignatureSniff'));
-        $this->_inlineIfSpaceMissingFailure = <<< 'NOWDOC'
-<?php
-if($value === true)
-    echo 3;
-NOWDOC;
-        $this->_inlineIfSpaceMissingPass = <<< 'NOWDOC'
-<?php
-if ($value === true)
-    echo 3;
-NOWDOC;
         $this->_structuredIfSpaceMissingFailure = <<< 'NOWDOC'
 <?php
 if($value === true) {
@@ -37,20 +23,6 @@ if ($value === true) {
     echo 3;
 }
 NOWDOC;
-    }
-
-    public function testInlineIfSpaceMissing()
-    {
-        $this->_phpcs->processFile('InlineIfSpaceMissing', $this->_inlineIfSpaceMissingFailure);
-
-        $this->assertErrorMessages('Expected "if (...)\n"; found "if(...)\n"');
-    }
-
-    public function testInlineIfSpaceMissingPass()
-    {
-        $this->_phpcs->processFile('InlineIfSpaceMissingPass', $this->_inlineIfSpaceMissingPass);
-
-        $this->assertNoErrors('InlineIfSpaceMissingPass');
     }
 
     public function testStructuredIfSpaceMissing()
