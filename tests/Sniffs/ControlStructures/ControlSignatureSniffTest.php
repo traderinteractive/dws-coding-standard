@@ -8,6 +8,10 @@ class DWS_Sniffs_ControlStructures_ControlSignatureSniff_Test extends SniffTestC
 
     private $_structuredIfSpaceMissingPass;
 
+    private $_doWhile;
+
+    private $_brokenDoWhile;
+
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_ControlStructures_ControlSignatureSniff'));
@@ -23,6 +27,20 @@ if ($value === true) {
     echo 3;
 }
 NOWDOC;
+        $this->_doWhile = <<< 'NOWDOC'
+<?php
+do {
+    echo 3;
+} while (true);
+
+NOWDOC;
+        $this->_brokenDoWhile = <<< 'NOWDOC'
+<?php
+do {
+    echo 3;
+} while(true);
+
+NOWDOC;
     }
 
     public function testStructuredIfSpaceMissing()
@@ -37,5 +55,19 @@ NOWDOC;
         $this->_phpcs->processFile('StructuredIfSpaceMissingPass', $this->_structuredIfSpaceMissingPass);
 
         $this->assertNoErrors('StructuredIfSpaceMissingPass');
+    }
+
+    public function testDoWhile()
+    {
+        $this->_phpcs->processFile('DoWhile', $this->_doWhile);
+
+        $this->assertNoErrors('DoWhile');
+    }
+
+    public function testBrokenDoWhile()
+    {
+        $this->_phpcs->processFile('BrokenDoWhile', $this->_brokenDoWhile);
+
+        $this->assertErrorMessages('Expected "do {\n...} while (...);\n"; found "do {\n...} while(...);\n"');
     }
 }
