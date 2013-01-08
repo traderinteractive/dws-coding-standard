@@ -5,6 +5,13 @@ abstract class SniffTestCase extends PHPUnit_Framework_TestCase
 
     protected $_standard;
 
+    /**
+     * Setup the test fixture
+     *
+     * @param array $sniffs The sniffs to use in this test
+     *
+     * @return void
+     */
     public function setUp($sniffs)
     {
         $this->_standard = dirname(__DIR__) . '/DWS';
@@ -12,6 +19,13 @@ abstract class SniffTestCase extends PHPUnit_Framework_TestCase
         $this->_phpcs->process(array(), $this->_standard, $sniffs);
     }
 
+    /**
+     * Verify that a specific error was reported
+     *
+     * @param string|array $expectedErrorMessages The expected error messages
+     *
+     * @return void
+     */
     protected function assertErrorMessages($expectedErrorMessages)
     {
         if (is_string($expectedErrorMessages) === true) {
@@ -19,10 +33,21 @@ abstract class SniffTestCase extends PHPUnit_Framework_TestCase
         }
 
         foreach ($expectedErrorMessages as $expectedMessage) {
-            $this->assertContains($expectedMessage, print_r($this->_phpcs->getFilesErrors(), true));
+            $this->assertContains(
+                $expectedMessage,
+                print_r($this->_phpcs->getFilesErrors(), true),
+                print_r($this->_phpcs->getFilesErrors(), true)
+            );
         }
     }
 
+    /**
+     * Verify that no errors were reported
+     *
+     * @param string $fileName The filename to check
+     *
+     * @return void
+     */
     protected function assertNoErrors($fileName)
     {
         $errors = $this->_phpcs->getFilesErrors();
