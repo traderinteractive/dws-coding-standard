@@ -25,6 +25,11 @@ class DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniff_Test extends SniffTestC
     private $_spaceAtEndOfTry;
     private $_spaceAtEndOfCatch;
 
+    /**
+     * Setup the test fixture
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniff'));
@@ -194,6 +199,11 @@ try {
 NOWDOC;
     }
 
+    /**
+     * Verify that a space at the beginning of an if reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfIf()
     {
         $this->_phpcs->process(
@@ -208,6 +218,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of if');
     }
 
+    /**
+     * Verify that a space at the beginning of a while reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfWhile()
     {
         $this->_phpcs->process(
@@ -222,6 +237,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of while');
     }
 
+    /**
+     * Verify that a space at the beginning of a for reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfFor()
     {
         $this->_phpcs->process(
@@ -236,6 +256,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of for');
     }
 
+    /**
+     * Verify that a space at the beginning of a foreach reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfForeach()
     {
         $this->_phpcs->process(
@@ -250,6 +275,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of foreach');
     }
 
+    /**
+     * Verify that a space at the beginning of an else reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfElse()
     {
         $this->_phpcs->process(
@@ -264,6 +294,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of else');
     }
 
+    /**
+     * Verify that a space at the beginning of an elseif reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfElseif()
     {
         $this->_phpcs->process(
@@ -278,6 +313,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of elseif');
     }
 
+    /**
+     * Verify that a space at the beginning of a try reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfTry()
     {
         $this->_phpcs->process(
@@ -292,6 +332,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of try');
     }
 
+    /**
+     * Verify that a space at the beginning of a catch reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtBeginningOfCatch()
     {
         $this->_phpcs->process(
@@ -306,6 +351,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at beginning of catch');
     }
 
+    /**
+     * Verify that a space at the end of an if reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfIf()
     {
         $this->_phpcs->process(
@@ -320,6 +370,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at end of if');
     }
 
+    /**
+     * Verify that a space at the end of a while reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfWhile()
     {
         $this->_phpcs->process(
@@ -334,6 +389,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at end of while');
     }
 
+    /**
+     * Verify that a space at the end of a for reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfFor()
     {
         $this->_phpcs->process(
@@ -348,6 +408,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at end of for');
     }
 
+    /**
+     * Verify that a space at the end of a foreach reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfForeach()
     {
         $this->_phpcs->process(
@@ -362,6 +427,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at end of foreach');
     }
 
+    /**
+     * Verify that a space at the end of an else reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfElse()
     {
         $this->_phpcs->process(
@@ -376,6 +446,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at end of else');
     }
 
+    /**
+     * Verify that a space at the end of an elseif reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfElseif()
     {
         $this->_phpcs->process(
@@ -390,6 +465,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at end of elseif');
     }
 
+    /**
+     * Verify that a space at the end of a try reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfTry()
     {
         $this->_phpcs->process(
@@ -404,6 +484,11 @@ NOWDOC;
         $this->assertErrorMessages('Blank line at end of try');
     }
 
+    /**
+     * Verify that a space at the end of a catch reports an error
+     *
+     * @return void
+     */
     public function testSpaceAtEndOfCatch()
     {
         $this->_phpcs->process(

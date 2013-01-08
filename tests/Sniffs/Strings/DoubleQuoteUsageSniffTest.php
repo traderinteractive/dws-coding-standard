@@ -14,6 +14,11 @@ class DWS_Sniffs_Strings_DoubleQuoteUsageSniff_Test extends SniffTestCase
 
     private $_warrentedDoubleQuotesMultiLine;
 
+    /**
+     * Setup the test fixture
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp(array('DWS_Sniffs_Strings_DoubleQuoteUsageSniff'));
@@ -43,6 +48,11 @@ $world";
 NOWDOC;
     }
 
+    /**
+     * Verify that unwarrented double quotes report an error
+     *
+     * @return void
+     */
     public function testUnwarrentedDoubleQuotes()
     {
         $this->_phpcs->processFile('UnwarrentedDoubleQuotes', $this->_unwarrentedDoubleQuotes);
@@ -50,6 +60,11 @@ NOWDOC;
         $this->assertErrorMessages('String "Hello, World" does not require double quotes; use single quotes instead');
     }
 
+    /**
+     * Verify that double quotes with a variable does not report an error
+     *
+     * @return void
+     */
     public function testWarrentedDoubleQuotesVariable()
     {
         $this->_phpcs->processFile('WarrentedDoubleQuotesVariable', $this->_warrentedDoubleQuotesVariable);
@@ -57,6 +72,11 @@ NOWDOC;
         $this->assertNoErrors('WarrentedDoubleQuotesVariable');
     }
 
+    /**
+     * Verify that double quotes with a control character does not report an error
+     *
+     * @return void
+     */
     public function testWarrentedDoubleQuotesControlCharacter()
     {
         $this->_phpcs->processFile('WarrentedDoubleQuotesControlCharacter', $this->_warrentedDoubleQuotesControlCharacter);
@@ -64,6 +84,11 @@ NOWDOC;
         $this->assertNoErrors('WarrentedDoubleQuotesControlCharacter');
     }
 
+    /**
+     * Verify that unwarrented double quotes in a multiline string reports an error
+     *
+     * @return void
+     */
     public function testUnwarrentedDoubleQuotesMultiLine()
     {
         $this->_phpcs->processFile('UnwarrentedDoubleQuotesMultiLine', $this->_unwarrentedDoubleQuotesMultiLine);
@@ -71,6 +96,11 @@ NOWDOC;
         $this->assertErrorMessages("String \"Hello,\nWorld\" does not require double quotes; use single quotes instead");
     }
 
+    /**
+     * Verify that warrented double quotes in a multiline string does not report an error
+     *
+     * @return void
+     */
     public function testWarrentedDoubleQuotesMultiLine()
     {
         $this->_phpcs->processFile('WarrentedDoubleQuotesMultiLine', $this->_warrentedDoubleQuotesMultiLine);
