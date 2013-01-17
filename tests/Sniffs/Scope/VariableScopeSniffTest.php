@@ -18,6 +18,8 @@ class DWS_Sniffs_Scope_VariableScopeSniff_Test extends SniffTestCase
 
     private $_memberVariableScope;
 
+    private $_memberVariableInPhtml;
+
     private $_sameVariableNameDifferentFunctionScope;
 
     private $_memberFunctionParameterScope;
@@ -98,6 +100,13 @@ class penguin {
         echo $this->valueTwo;
     }
 }
+NOWDOC;
+        $this->_memberVariableInPhtml = <<< 'NOWDOC'
+<?php
+if ($isCold === false) {
+    $this->valueTwo = 'swim';
+}
+echo $this->valueTwo;
 NOWDOC;
         $this->_sameVariableNameDifferentFunctionScope = <<< 'NOWDOC'
 <?php
@@ -226,6 +235,17 @@ NOWDOC;
         $this->_phpcs->processFile('MemberVariableScope', $this->_memberVariableScope);
 
         $this->assertNoErrors('MemberVariableScope');
+    }
+
+    public function testMemberVariableInPhtml()
+    {
+        $this->_phpcs->processFile('MemberVariableInPhtml.phtml', $this->_memberVariableInPhtml);
+
+        $this->assertNoErrors('MemberVariableInPhtml.phtml');
+
+        $this->_phpcs->processFile('MemberVariableInPhtml.php', $this->_memberVariableInPhtml);
+
+        $this->assertErrorMessages("Variable '\$this' is in the wrong scope.");
     }
 
     public function testSameVariableNameDifferentFunctionScope()

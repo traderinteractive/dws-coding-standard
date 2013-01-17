@@ -36,6 +36,11 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
         $functionIndex = $phpcsFile->findPrevious(T_FUNCTION, $stackPtr);
         $lastScopeOpen = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$scopeOpeners, $stackPtr);
 
+        //Member variables are always ok
+        if ($variableName === '$this' && strstr($phpcsFile->getFilename(), '.phtml')) {
+            return;
+        }
+
         //Inline scope openers do not increment the level value
         $scopeOpenDistance = $tokens[$stackPtr]['line'] - $tokens[$lastScopeOpen]['line'];
         if (in_array($tokens[$lastScopeOpen]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners) === true
