@@ -36,6 +36,11 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
         $functionIndex = $phpcsFile->findPrevious(T_FUNCTION, $stackPtr);
         $lastScopeOpen = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$scopeOpeners, $stackPtr);
 
+        //Member variables are always ok
+        if ($variableName === '$this') {
+            return;
+        }
+
         //Inline scope openers do not increment the level value
         $scopeOpenDistance = $tokens[$stackPtr]['line'] - $tokens[$lastScopeOpen]['line'];
         if (in_array($tokens[$lastScopeOpen]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners) === true
@@ -48,10 +53,6 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
         if ($functionIndex !== false
                 && array_key_exists('scope_closer', $tokens[$functionIndex])
                 && $tokens[$functionIndex]['scope_closer'] > $stackPtr) {
-            //Member variables are always ok
-            if ($variableName === '$this') {
-                return;
-            }
 
             // find previous non-whitespace token. if it's a double colon, assume static class var
             $objOperator = $phpcsFile->findPrevious(array(T_WHITESPACE), ($stackPtr - 1), null, true);
