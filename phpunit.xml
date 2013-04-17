@@ -1,0 +1,7 @@
+<phpunit>
+  <filter>
+    <whitelist>
+      <directory>DWS/Sniffs</directory>
+    </whitelist>
+  </filter>
+</phpunit>
