@@ -1,5 +1,7 @@
 #!/usr/bin/env php
 <?php
+chdir(__DIR__);
+
 $returnStatus = null;
 passthru('composer install --dev', $returnStatus);
 if ($returnStatus !== 0) {
@@ -11,7 +13,7 @@ if ($returnStatus !== 0) {
     exit(1);
 }
 
-passthru('./vendor/bin/phpunit --coverage-clover clover.xml --configuration phpunit.xml tests/DWS', $returnStatus);
+passthru('./vendor/bin/phpunit --coverage-clover clover.xml tests/DWS', $returnStatus);
 if ($returnStatus !== 0) {
     exit(1);
 }
