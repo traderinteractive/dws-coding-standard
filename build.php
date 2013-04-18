@@ -1,5 +1,7 @@
 #!/usr/bin/env php
 <?php
+chdir(__DIR__);
+
 $returnStatus = null;
 passthru('composer install --dev', $returnStatus);
 if ($returnStatus !== 0) {
@@ -11,16 +13,16 @@ if ($returnStatus !== 0) {
     exit(1);
 }
 
-passthru('./vendor/bin/phpunit --coverage-clover clover.xml --configuration phpunit.xml tests/DWS', $returnStatus);
+passthru('./vendor/bin/phpunit --coverage-clover clover.xml tests/DWS', $returnStatus);
 if ($returnStatus !== 0) {
     exit(1);
 }
 
 $xml = new SimpleXMLElement(file_get_contents('clover.xml'));
-foreach ($xml->xpath('//metrics') as $metric) {
+foreach ($xml->xpath('//file/metrics') as $metric) {
     if ((int)$metric['elements'] !== (int)$metric['coveredelements']) {
         file_put_contents('php://stderr', "Code coverage was NOT 100%\n");
-        // exit(1); TODO: Get code coverage to 100%
+        exit(0); //TODO: Get code coverage to 100%
     }
 }
 
