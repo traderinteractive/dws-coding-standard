@@ -8,7 +8,7 @@ if ($returnStatus !== 0) {
     exit(1);
 }
 
-passthru('./vendor/bin/phpcs --standard=' . __DIR__ . '/DWS --extensions=php -n tests DWS', $returnStatus);
+passthru('./vendor/bin/phpcs --standard=' . __DIR__ . '/DWS --extensions=php -n tests DWS *.php', $returnStatus);
 if ($returnStatus !== 0) {
     exit(1);
 }
