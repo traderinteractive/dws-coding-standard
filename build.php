@@ -21,8 +21,8 @@ if ($returnStatus !== 0) {
 $xml = new SimpleXMLElement(file_get_contents('clover.xml'));
 foreach ($xml->xpath('//file/metrics') as $metric) {
     if ((int)$metric['elements'] !== (int)$metric['coveredelements']) {
-        file_put_contents('php://stderr', "Code coverage was NOT 100%\n");
-        exit(0); //TODO: Get code coverage to 100%
+        file_put_contents('php://stderr', "Code coverage was NOT 100% but we need to get there ASAP\n");
+        exit(0);
     }
 }
 
