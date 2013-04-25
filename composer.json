@@ -26,6 +26,9 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7.19",
+        "phpdocumentor/phpdocumentor": "2.0.0a11",
         "lib-libxml": "*"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
