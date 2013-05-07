@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4778cac152c7d92f599acb8244dedba8",
+    "hash": "8e3d31e12723603349bc48e528c85324",
     "packages": [
         {
             "name": "squizlabs/php_codesniffer",
