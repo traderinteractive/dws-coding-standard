@@ -1,7 +1,7 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/AbstractSniffUnitTest.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/AbstractSniffUnitTest.php';
 
-class DWS_Tests_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSniffUnitTest
+class DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {

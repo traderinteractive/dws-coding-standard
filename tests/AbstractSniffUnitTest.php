@@ -50,13 +50,15 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
      */
     public final function runTest()
     {
-        $basename = substr(get_class($this), 0, -4);
-        $testFile = dirname(__DIR__) . '/' . str_replace('_', '/', $basename) . 'Test.inc';
+        $testClassName = get_class($this);
+        $basename = substr($testClassName, 0, -4);
+        $testFile = dirname(__DIR__) . '/tests/' . str_replace('_', '/', $testClassName) . '.inc';
 
-        self::$_phpcs->process(array(), 'DWS', array(str_replace('_Tests_', '_Sniffs_', $basename)));
+        self::$_phpcs->process(array(), 'DWS', array($basename));
         self::$_phpcs->setIgnorePatterns(array());
 
         if (!file_exists($testFile)) {
+            $this->markTestSkipped();
             return;
         }
 

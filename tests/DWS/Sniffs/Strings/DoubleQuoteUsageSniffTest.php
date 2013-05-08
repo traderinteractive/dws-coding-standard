@@ -1,7 +1,7 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/AbstractSniffUnitTest.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/AbstractSniffUnitTest.php';
 
-class DWS_Tests_Strings_DoubleQuoteUsageSniffTest extends AbstractSniffUnitTest
+class DWS_Sniffs_Strings_DoubleQuoteUsageSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
