@@ -33,4 +33,9 @@ class DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSni
     {
         return array();
     }
+
+    protected function _getSniffName()
+    {
+        return 'DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniff';
+    }
 }

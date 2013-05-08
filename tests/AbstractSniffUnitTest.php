@@ -50,13 +50,10 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
      */
     public final function runTest()
     {
-        $testClassName = get_class($this);
-        $basename = substr($testClassName, 0, -4);
-        $testFile = dirname(__DIR__) . '/tests/' . str_replace('_', '/', $testClassName) . '.inc';
-
-        self::$_phpcs->process(array(), 'DWS', array($basename));
+        self::$_phpcs->process(array(), 'DWS', array($this->_getSniffName()));
         self::$_phpcs->setIgnorePatterns(array());
 
+        $testFile = dirname(__DIR__) . '/tests/' . str_replace('_', '/', get_class($this)) . '.inc';
         if (!file_exists($testFile)) {
             $this->markTestSkipped();
             return;
@@ -260,4 +257,6 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
      * @return array(int => int)
      */
     protected abstract function getWarningList();
+
+    protected abstract function _getSniffName();
 }

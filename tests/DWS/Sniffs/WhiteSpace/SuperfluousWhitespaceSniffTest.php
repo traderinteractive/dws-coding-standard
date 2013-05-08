@@ -12,4 +12,9 @@ class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniffTest extends AbstractSniff
     {
         return array();
     }
+
+    protected function _getSniffName()
+    {
+        return 'DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff';
+    }
 }

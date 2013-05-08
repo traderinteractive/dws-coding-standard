@@ -1,11 +1,11 @@
 <?php
 require_once dirname(dirname(dirname(__DIR__))) . '/AbstractSniffUnitTest.php';
 
-class DWS_Sniffs_Strings_DoubleQuoteUsageSniffTest extends AbstractSniffUnitTest
+class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniffGoodBeginningTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array(2 => 1, 9 => 1);
+        return array(6 => 1);
     }
 
     public function getWarningList()
@@ -15,6 +15,6 @@ class DWS_Sniffs_Strings_DoubleQuoteUsageSniffTest extends AbstractSniffUnitTest
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Strings_DoubleQuoteUsageSniff';
+        return 'DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff';
     }
 }

@@ -12,4 +12,9 @@ class DWS_Sniffs_ControlStructures_ControlSignatureSniffTest extends AbstractSni
     {
         return array();
     }
+
+    protected function _getSniffName()
+    {
+        return 'DWS_Sniffs_ControlStructures_ControlSignatureSniff';
+    }
 }
