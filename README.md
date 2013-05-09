@@ -1,4 +1,5 @@
 # DWS Coding Standard
+[![Build Status](https://travis-ci.org/dominionenterprises/dws-coding-standard.png)](https://travis-ci.org/dominionenterprises/dws-coding-standard)
 
 A fairly complete [http://www.squizlabs.com/php-codesniffer](PHP_CodeSniffer) coding standard.  See the [src/standard.md](standard document) to
 see what "sniffs" are enforced.
