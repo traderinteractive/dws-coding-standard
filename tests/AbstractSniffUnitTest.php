@@ -8,8 +8,6 @@
 
 define('PHP_CODESNIFFER_IN_TESTS', true);
 
-require_once 'PHPUnit/Framework/TestCase.php';
-
 /**
  * An abstract class that all sniff unit tests must extend.
  *

@@ -1,6 +1,4 @@
 <?php
-require_once dirname(dirname(dirname(__DIR__))) . '/AbstractSniffUnitTest.php';
-
 class DWS_Sniffs_Scope_VariableScopeSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
