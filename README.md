@@ -1,12 +1,12 @@
 # DWS Coding Standard
 [![Build Status](https://travis-ci.org/dominionenterprises/dws-coding-standard.png)](https://travis-ci.org/dominionenterprises/dws-coding-standard)
 
-A fairly complete [http://www.squizlabs.com/php-codesniffer](PHP_CodeSniffer) coding standard.  See the [src/standard.md](standard document) to
+A fairly complete [PHP_CodeSniffer](http://www.squizlabs.com/php-codesniffer) coding standard.  See the [standard document](src/standard.md) to
 see what "sniffs" are enforced.
 
 ## Composer
 
-This standard is meant to be used in a project using [http://getcomposer.org](Composer).  It can be added to your project's composer.json as follows:
+This standard is meant to be used in a project using [Composer](http://getcomposer.org).  It can be added to your project's composer.json as follows:
 
 ```json
 {
