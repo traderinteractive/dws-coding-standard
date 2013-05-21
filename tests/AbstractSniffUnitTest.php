@@ -8,8 +8,6 @@
 
 define('PHP_CODESNIFFER_IN_TESTS', true);
 
-require_once 'PHPUnit/Framework/TestCase.php';
-
 /**
  * An abstract class that all sniff unit tests must extend.
  *
@@ -50,13 +48,12 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
      */
     public final function runTest()
     {
-        $basename = substr(get_class($this), 0, -4);
-        $testFile = dirname(__DIR__) . '/' . str_replace('_', '/', $basename) . 'Test.inc';
-
-        self::$_phpcs->process(array(), 'DWS', array(str_replace('_Tests_', '_Sniffs_', $basename)));
+        self::$_phpcs->process(array(), 'DWS', array($this->_getSniffName()));
         self::$_phpcs->setIgnorePatterns(array());
 
+        $testFile = dirname(__DIR__) . '/tests/' . str_replace('_', '/', get_class($this)) . '.inc';
         if (!file_exists($testFile)) {
+            $this->markTestSkipped();
             return;
         }
 
@@ -258,4 +255,6 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
      * @return array(int => int)
      */
     protected abstract function getWarningList();
+
+    protected abstract function _getSniffName();
 }

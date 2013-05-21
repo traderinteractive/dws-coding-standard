@@ -1,7 +1,5 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/AbstractSniffUnitTest.php';
-
-class DWS_Tests_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSniffUnitTest
+class DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
@@ -32,5 +30,10 @@ class DWS_Tests_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSnif
     public function getWarningList()
     {
         return array();
+    }
+
+    protected function _getSniffName()
+    {
+        return 'DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniff';
     }
 }
