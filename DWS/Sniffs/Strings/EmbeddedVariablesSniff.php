@@ -21,7 +21,7 @@ class DWS_Sniffs_Strings_EmbeddedVariablesSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_CONSTANT_ENCAPSED_STRING, T_DOUBLE_QUOTED_STRING);
+        return array(T_DOUBLE_QUOTED_STRING);
     }
 
     /**
@@ -44,17 +44,6 @@ class DWS_Sniffs_Strings_EmbeddedVariablesSniff implements PHP_CodeSniffer_Sniff
         $workingString = $tokens[$stackPtr]['content'];
         for ($i = $stackPtr + 1; $tokens[$i]['code'] === $tokens[$stackPtr]['code']; ++$i) {
             $workingString .= $tokens[$i]['content'];
-        }
-
-        // Check if it's a double quoted string.
-        if (strpos($workingString, '"') === false) {
-            return;
-        }
-
-        // Make sure it's not a part of a string started in a previous line.
-        // If it is, then we have already checked it.
-        if ($workingString[0] !== '"') {
-            return;
         }
 
         // The use of variables in double quoted strings is allowed.
