@@ -46,14 +46,14 @@ final class DWS_Sniffs_Arrays_TrailingCommaSniff implements PHP_CodeSniffer_Snif
         }
 
         $lastComma = array_pop($commas);
-        $trailingComma = $phpcsFile->findNext(T_WHITESPACE, $lastComma + 1, $arrayEnd, true) === false;
+        $trailingComma = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $lastComma + 1, $arrayEnd, true) === false;
 
         if ($isSingleLine) {
             if ($trailingComma) {
                 $phpcsFile->addError('No trailing comma allowed on single-line arrays', $lastComma, 'SingleLineTrailingComma');
             }
         } elseif (!$trailingComma) {
-            $previousItem = $phpcsFile->findPrevious(T_WHITESPACE, $arrayEnd - 1, $arrayStart, true);
+            $previousItem = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, $arrayEnd - 1, $arrayStart, true);
             $phpcsFile->addError('Trailing comma required for multi-line arrays', $previousItem, 'MultiLineTrailingComma');
         }
     }
