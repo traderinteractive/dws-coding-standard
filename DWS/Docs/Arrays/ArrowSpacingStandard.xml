@@ -1,0 +1,31 @@
+<documentation title="Arrow Spacing">
+    <standard>
+    <![CDATA[
+    Double arrows in arrays should be surrounded by 1 space on each side.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: 1 space on each side of arrow.">
+        <![CDATA[
+$foo = array('x'<em> </em>=><em> </em>'y');
+]]>
+        </code>
+        <code title="Invalid: Extra space around the arrow.">
+        <![CDATA[
+$foo = array('x'<em>  </em>=><em>  </em>'y');
+]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: 1 space on each side of arrow.">
+        <![CDATA[
+$foo = ['x'<em> </em>=><em> </em>'y'];
+]]>
+        </code>
+        <code title="Invalid: No spaces around the arrow.">
+        <![CDATA[
+$foo = ['x'<em></em>=><em></em>'y'];
+]]>
+        </code>
+    </code_comparison>
+</documentation>

@@ -4,7 +4,12 @@ These are the coding "sniffs" enforced by this standard.
 
 ## Table Of Contents
 * [Arrays](#arrays)
+    * [Array Declarations](#array-declarations)
+    * [Arrow Spacing](#arrow-spacing)
     * [Bracket Spacing](#bracket-spacing)
+    * [Comma Spacing](#comma-spacing)
+    * [Multiline Array Indentation](#multiline-array-indentation)
+    * [Trailing Commas](#trailing-commas)
 * [Classes](#classes)
     * [Lowercase Keywords](#lowercase-keywords)
     * [Self Member Reference](#self-member-reference)
@@ -80,6 +85,36 @@ These are the coding "sniffs" enforced by this standard.
 
 ## Arrays
 
+### Array Declarations
+Array declarations should not have a space between the array keyword and the opening parenthesis.  Empty arrays should not have spaces between brackets/parentheses.
+
+Valid:
+```php
+<?php
+$foo = array();
+```
+
+Invalid:
+```php
+<?php
+$foo = array ( );
+```
+
+### Arrow Spacing
+Double arrows in arrays should be surrounded by 1 space on each side.
+
+Valid:
+```php
+<?php
+$foo = array('x' => 'y');
+```
+
+Invalid:
+```php
+<?php
+$foo = array('x'=>  'y');
+```
+
 ### Bracket Spacing
 When referencing arrays you should not use spaces before or after the opening bracket or before the closing bracket.
 
@@ -93,6 +128,65 @@ Invalid:
 ```php
 <?php
 $var = $foo [ 'bar' ];
+```
+
+### Comma Spacing
+Commas in arrays should be spaced correctly with no whitespace before the comma.  Single-line arrays should have exactly 1 space after the comma and multi-line arrays should have nothing but an optional comment on the line after the comma.
+
+Valid:
+```php
+<?php
+$foo = array(1, 2);
+```
+
+Invalid:
+```php
+<?php
+$foo = array(1 ,2);
+```
+
+### Multiline Array Indentation
+Multi-line arrays should have each line inside the array indented 4 spaces.
+
+Valid:
+```php
+<?php
+$foo = array(
+    1,
+    2,
+);
+```
+
+Invalid:
+```php
+<?php
+$foo = array(
+  1,
+        2,
+    );
+```
+
+### Trailing Commas
+Single-line arrays should not have trailing commas and multi-line arrays should.
+
+Valid:
+```php
+<?php
+$foo = array(1, 2);
+$foo = array(
+    1,
+    2,
+);
+```
+
+Invalid:
+```php
+<?php
+$foo = array(1, 2,);
+$foo = array(
+    1,
+    2
+);
 ```
 
 ## Classes

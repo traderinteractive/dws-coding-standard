@@ -1,0 +1,37 @@
+<documentation title="Trailing Commas">
+    <standard>
+    <![CDATA[
+    Single-line arrays should not have trailing commas and multi-line arrays should.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Single-line array with no trailing comma.">
+        <![CDATA[
+$foo = array(1, 2<em></em>);
+]]>
+        </code>
+        <code title="Invalid: Single-line array with a trailing comma.">
+        <![CDATA[
+$foo = array(1, 2<em>,</em>);
+]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: Multi-line array with a trailing comma.">
+        <![CDATA[
+$foo = [
+    1,
+    2<em>,</em>
+];
+]]>
+        </code>
+        <code title="Invalid: Multi-line array with no trailing comma.">
+        <![CDATA[
+$foo = [
+    1,
+    2<em></em>
+];
+]]>
+        </code>
+    </code_comparison>
+</documentation>
