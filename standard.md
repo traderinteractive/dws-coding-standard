@@ -8,6 +8,7 @@ These are the coding "sniffs" enforced by this standard.
     * [Arrow Spacing](#arrow-spacing)
     * [Bracket Spacing](#bracket-spacing)
     * [Comma Spacing](#comma-spacing)
+    * [Multiline Array Indentation](#multiline-array-indentation)
     * [Trailing Commas](#trailing-commas)
 * [Classes](#classes)
     * [Lowercase Keywords](#lowercase-keywords)
@@ -142,6 +143,27 @@ Invalid:
 ```php
 <?php
 $foo = array(1 ,2);
+```
+
+### Multiline Array Indentation
+Multi-line arrays should have each line inside the array indented 4 spaces.
+
+Valid:
+```php
+<?php
+$foo = array(
+    1,
+    2,
+);
+```
+
+Invalid:
+```php
+<?php
+$foo = array(
+  1,
+        2,
+    );
 ```
 
 ### Trailing Commas

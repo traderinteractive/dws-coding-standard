@@ -1,0 +1,43 @@
+<documentation title="Multi-line Array Indentation">
+    <standard>
+    <![CDATA[
+    Multi-line arrays should have each line inside the array indented 4 spaces.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Opening and closing lines of array at same indentation level.">
+        <![CDATA[
+<em></em>$foo = array(
+    1,
+    2,
+<em></em>);
+]]>
+        </code>
+        <code title="Invalid: Closing line indented differently than opening line of array.">
+        <![CDATA[
+<em></em>$foo = array(
+    1,
+    2,
+<em>    </em>);
+]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: Each element indented 4 spaces.">
+        <![CDATA[
+$foo = array(
+<em>    </em>1,
+<em>    </em>2,
+);
+]]>
+        </code>
+        <code title="Invalid: Elements of the array not indented exactly 4 spaces.">
+        <![CDATA[
+$foo = array(
+<em>  </em>1,
+<em>        </em>2,
+);
+]]>
+        </code>
+    </code_comparison>
+</documentation>
