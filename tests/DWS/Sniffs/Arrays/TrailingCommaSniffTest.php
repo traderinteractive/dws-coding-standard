@@ -5,7 +5,7 @@ final class DWS_Sniffs_Arrays_TrailingCommaSniffTest extends AbstractSniffUnitTe
 {
     public function getErrorList()
     {
-        return array(17 => 1, 18 => 1, 19 => 1, 20 => 1, 24 => 1, 29 => 1);
+        return array(22 => 1, 23 => 1, 24 => 1, 25 => 1, 29 => 1, 34 => 1, 39 => 1);
     }
 
     public function getWarningList()
