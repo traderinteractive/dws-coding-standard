@@ -1,0 +1,60 @@
+<documentation title="Comma Spacing">
+    <standard>
+    <![CDATA[
+    Commas in arrays should be spaced correctly with no whitespace before the comma.  Single-line arrays should have exactly 1 space after the comma and multi-line arrays should have nothing but an optional comment on the line after the comma.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: 0 spaces before the comma.">
+        <![CDATA[
+$foo = array(1<em></em>, 2);
+]]>
+        </code>
+        <code title="Invalid: Extra space before the comma.">
+        <![CDATA[
+$foo = array(1<em> </em>, 2);
+]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: 1 space after the comma.">
+        <![CDATA[
+$foo = [1,<em> </em>2];
+]]>
+        </code>
+        <code title="Invalid: 0 spaces after the comma.">
+        <![CDATA[
+$foo = [1,<em></em>2];
+]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: 1 space after the comma.">
+        <![CDATA[
+$foo = array(1,<em> </em>2);
+]]>
+        </code>
+        <code title="Invalid: Extra spaces after the comma.">
+        <![CDATA[
+$foo = array(1,<em>  </em>2);
+]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: Comma at the end of the line.">
+        <![CDATA[
+$foo = [
+    1, // comment<em>
+    </em>2,
+];
+]]>
+        </code>
+        <code title="Invalid: Extra array elements after comma.">
+        <![CDATA[
+$foo = [
+    1,<em> 2,</em>
+];
+]]>
+        </code>
+    </code_comparison>
+</documentation>

@@ -7,6 +7,7 @@ These are the coding "sniffs" enforced by this standard.
     * [Array Declarations](#array-declarations)
     * [Arrow Spacing](#arrow-spacing)
     * [Bracket Spacing](#bracket-spacing)
+    * [Comma Spacing](#comma-spacing)
 * [Classes](#classes)
     * [Lowercase Keywords](#lowercase-keywords)
     * [Self Member Reference](#self-member-reference)
@@ -125,6 +126,21 @@ Invalid:
 ```php
 <?php
 $var = $foo [ 'bar' ];
+```
+
+### Comma Spacing
+Commas in arrays should be spaced correctly with no whitespace before the comma.  Single-line arrays should have exactly 1 space after the comma and multi-line arrays should have nothing but an optional comment on the line after the comma.
+
+Valid:
+```php
+<?php
+$foo = array(1, 2);
+```
+
+Invalid:
+```php
+<?php
+$foo = array(1 ,2);
 ```
 
 ## Classes
