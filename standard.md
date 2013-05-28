@@ -5,6 +5,7 @@ These are the coding "sniffs" enforced by this standard.
 ## Table Of Contents
 * [Arrays](#arrays)
     * [Array Declarations](#array-declarations)
+    * [Arrow Spacing](#arrow-spacing)
     * [Bracket Spacing](#bracket-spacing)
 * [Classes](#classes)
     * [Lowercase Keywords](#lowercase-keywords)
@@ -94,6 +95,21 @@ Invalid:
 ```php
 <?php
 $foo = array ( );
+```
+
+### Arrow Spacing
+Double arrows in arrays should be surrounded by 1 space on each side.
+
+Valid:
+```php
+<?php
+$foo = array('x' => 'y');
+```
+
+Invalid:
+```php
+<?php
+$foo = array('x'=>  'y');
 ```
 
 ### Bracket Spacing
