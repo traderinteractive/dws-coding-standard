@@ -4,6 +4,7 @@ These are the coding "sniffs" enforced by this standard.
 
 ## Table Of Contents
 * [Arrays](#arrays)
+    * [Array Declarations](#array-declarations)
     * [Bracket Spacing](#bracket-spacing)
 * [Classes](#classes)
     * [Lowercase Keywords](#lowercase-keywords)
@@ -79,6 +80,21 @@ These are the coding "sniffs" enforced by this standard.
     * [Superfluous Whitespace](#superfluous-whitespace)
 
 ## Arrays
+
+### Array Declarations
+Array declarations should not have a space between the array keyword and the opening parenthesis.  Empty arrays should not have spaces between brackets/parentheses.
+
+Valid:
+```php
+<?php
+$foo = array();
+```
+
+Invalid:
+```php
+<?php
+$foo = array ( );
+```
 
 ### Bracket Spacing
 When referencing arrays you should not use spaces before or after the opening bracket or before the closing bracket.

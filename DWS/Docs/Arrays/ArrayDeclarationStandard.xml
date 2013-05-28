@@ -1,0 +1,31 @@
+<documentation title="Array Declarations">
+    <standard>
+    <![CDATA[
+    Array declarations should not have a space between the array keyword and the opening parenthesis.  Empty arrays should not have spaces between brackets/parentheses.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: No extra space.">
+        <![CDATA[
+$foo = array<em></em>();
+]]>
+        </code>
+        <code title="Invalid: Space between keyword and parentheses.">
+        <![CDATA[
+$foo = array<em> </em>();
+]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: No extra space.">
+        <![CDATA[
+$foo = [<em></em>];
+]]>
+        </code>
+        <code title="Invalid: Space between brackets.">
+        <![CDATA[
+$foo = [<em> </em>];
+]]>
+        </code>
+    </code_comparison>
+</documentation>
