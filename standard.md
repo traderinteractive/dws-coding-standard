@@ -8,6 +8,7 @@ These are the coding "sniffs" enforced by this standard.
     * [Arrow Spacing](#arrow-spacing)
     * [Bracket Spacing](#bracket-spacing)
     * [Comma Spacing](#comma-spacing)
+    * [Trailing Commas](#trailing-commas)
 * [Classes](#classes)
     * [Lowercase Keywords](#lowercase-keywords)
     * [Self Member Reference](#self-member-reference)
@@ -141,6 +142,29 @@ Invalid:
 ```php
 <?php
 $foo = array(1 ,2);
+```
+
+### Trailing Commas
+Single-line arrays should not have trailing commas and multi-line arrays should.
+
+Valid:
+```php
+<?php
+$foo = array(1, 2);
+$foo = array(
+    1,
+    2,
+);
+```
+
+Invalid:
+```php
+<?php
+$foo = array(1, 2,);
+$foo = array(
+    1,
+    2
+);
 ```
 
 ## Classes
