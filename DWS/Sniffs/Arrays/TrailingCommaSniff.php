@@ -41,9 +41,6 @@ final class DWS_Sniffs_Arrays_TrailingCommaSniff implements PHP_CodeSniffer_Snif
         $isSingleLine = $tokens[$arrayStart]['line'] === $tokens[$arrayEnd]['line'];
 
         $commas = DWS_Helpers_Array::commaPositions($phpcsFile, $arrayStart);
-        if (count($commas) === 0) {
-            return;
-        }
 
         $lastComma = array_pop($commas);
         $trailingComma = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $lastComma + 1, $arrayEnd, true) === false;
