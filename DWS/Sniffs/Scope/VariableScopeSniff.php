@@ -38,16 +38,19 @@ class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_Abst
 
         //Inline scope openers do not increment the level value
         $scopeOpenDistance = $tokens[$stackPtr]['line'] - $tokens[$lastScopeOpen]['line'];
-        if (in_array($tokens[$lastScopeOpen]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners) === true
+        if (
+            in_array($tokens[$lastScopeOpen]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners) === true
             && ($scopeOpenDistance === 1 || $scopeOpenDistance === 0)//Include the variables in the condition
             && $tokens[$stackPtr]['level'] === $tokens[$lastScopeOpen]['level']
-           ) {
+        ) {
             ++$level;
         }
 
-        if ($functionIndex !== false
-                && array_key_exists('scope_closer', $tokens[$functionIndex])
-                && $tokens[$functionIndex]['scope_closer'] > $stackPtr) {
+        if (
+            $functionIndex !== false
+            && array_key_exists('scope_closer', $tokens[$functionIndex])
+            && $tokens[$functionIndex]['scope_closer'] > $stackPtr
+        ) {
             //Member variables are always ok
             if ($variableName === '$this') {
                 return;

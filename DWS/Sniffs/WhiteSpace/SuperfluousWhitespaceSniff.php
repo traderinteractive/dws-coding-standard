@@ -60,9 +60,10 @@ class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSniffe
             }
 
             $phpcsFile->addError('Additional whitespace found at start of file', $stackPtr, 'StartFile');
-        } elseif (in_array($tokens[$stackPtr]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners)
-                && array_key_exists('scope_opener', $tokens[$stackPtr])
-            ) {
+        } elseif (
+            in_array($tokens[$stackPtr]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners)
+            && array_key_exists('scope_opener', $tokens[$stackPtr])
+        ) {
             $classOpen = $tokens[$stackPtr]['scope_opener'];
             $classClose = $tokens[$stackPtr]['scope_closer'];
             $structureType = strtolower(str_replace('T_', '', $tokens[$stackPtr]['type']));
@@ -85,8 +86,10 @@ class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSniffe
             }
 
             //Check for multiple blanks lines in a file.
-            if ($stackPtr < 2
-                || ($tokens[$stackPtr - 1]['line'] < $tokens[$stackPtr]['line'] && $tokens[$stackPtr - 2]['code'] !== T_WHITESPACE)) {
+            if (
+                $stackPtr < 2
+                || ($tokens[$stackPtr - 1]['line'] < $tokens[$stackPtr]['line'] && $tokens[$stackPtr - 2]['code'] !== T_WHITESPACE)
+            ) {
                 // This is an empty line and the line before this one is not
                 //  empty, so this could be the start of a multiple empty
                 // line block.
