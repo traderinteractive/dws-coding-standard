@@ -35,8 +35,8 @@ final class DWS_Sniffs_Arrays_TrailingCommaSniff implements PHP_CodeSniffer_Snif
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $arrayStart = DWS_Helpers_Array::arrayStart($phpcsFile, $stackPtr);
-        $arrayEnd = DWS_Helpers_Array::arrayEnd($phpcsFile, $stackPtr);
+        $arrayStart = DWS_Helpers_Bracket::bracketStart($phpcsFile, $stackPtr);
+        $arrayEnd = DWS_Helpers_Bracket::bracketEnd($phpcsFile, $stackPtr);
 
         $isSingleLine = $tokens[$arrayStart]['line'] === $tokens[$arrayEnd]['line'];
 
