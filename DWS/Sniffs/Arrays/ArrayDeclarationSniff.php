@@ -35,8 +35,8 @@ final class DWS_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_S
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $arrayStart = DWS_Helpers_Array::arrayStart($phpcsFile, $stackPtr);
-        $arrayEnd = DWS_Helpers_Array::arrayEnd($phpcsFile, $stackPtr);
+        $arrayStart = DWS_Helpers_Bracket::bracketStart($phpcsFile, $stackPtr);
+        $arrayEnd = DWS_Helpers_Bracket::bracketEnd($phpcsFile, $stackPtr);
 
         if (!in_array($arrayStart, array($stackPtr, $stackPtr + 1))) {
             $phpcsFile->addError('No whitespace allowed between the array keyword and the opening parenthesis', $stackPtr, 'SpaceAfterKeyword');

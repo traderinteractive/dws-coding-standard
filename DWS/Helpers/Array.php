@@ -71,17 +71,11 @@ final class DWS_Helpers_Array
 
         $commas = array();
         for ($i = $arrayStart + 1; $i <= $arrayEnd; $i++) {
-            if ($tokens[$i]['code'] === T_OPEN_PARENTHESIS && array_key_exists('parenthesis_closer', $tokens[$i])) {
+            if (array_key_exists('parenthesis_closer', $tokens[$i])) {
                 $i = $tokens[$i]['parenthesis_closer'];
-                continue;
-            }
-
-            if ($tokens[$i]['code'] === T_OPEN_SHORT_ARRAY && array_key_exists('bracket_closer', $tokens[$i])) {
+            } elseif (array_key_exists('bracket_closer', $tokens[$i])) {
                 $i = $tokens[$i]['bracket_closer'];
-                continue;
-            }
-
-            if ($tokens[$i]['code'] === T_COMMA) {
+            } elseif ($tokens[$i]['code'] === T_COMMA) {
                 $commas[] = $i;
             }
         }

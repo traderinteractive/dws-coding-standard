@@ -1,5 +1,5 @@
 <?php
-class DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSniffUnitTest
+class DWS_Sniffs_WhiteSpace_ControlStructureInteriorSpacingSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
@@ -34,6 +34,6 @@ class DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniffTest extends AbstractSni
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_WhiteSpace_ControlStructureSpacingSniff';
+        return 'DWS_Sniffs_WhiteSpace_ControlStructureInteriorSpacingSniff';
     }
 }
