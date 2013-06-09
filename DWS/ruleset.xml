@@ -15,6 +15,7 @@
     <rule ref="Squiz.Commenting.DocCommentAlignment" />
     <rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
     <rule ref="PEAR.Commenting.InlineComment" />
+    <rule ref="Generic.Commenting.Fixme" />
     <rule ref="Generic.Commenting.Todo" />
     <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration" />
     <rule ref="Squiz.ControlStructures.ForLoopDeclaration" />
