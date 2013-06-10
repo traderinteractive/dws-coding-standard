@@ -1,7 +1,7 @@
 # DWS Coding Standard
 [![Build Status](https://travis-ci.org/dominionenterprises/dws-coding-standard.png)](https://travis-ci.org/dominionenterprises/dws-coding-standard)
 
-A fairly complete [PHP_CodeSniffer](http://www.squizlabs.com/php-codesniffer) coding standard.  See the [standard document](src/standard.md) to
+A fairly complete [PHP_CodeSniffer](http://www.squizlabs.com/php-codesniffer) coding standard.  See the [standard document](standard.md) to
 see what "sniffs" are enforced.
 
 ## Composer
