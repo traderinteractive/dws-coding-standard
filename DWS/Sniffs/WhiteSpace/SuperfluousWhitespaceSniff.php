@@ -90,10 +90,8 @@ class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSniffe
                 $stackPtr < 2
                 || ($tokens[$stackPtr - 1]['line'] < $tokens[$stackPtr]['line'] && $tokens[$stackPtr - 2]['code'] !== T_WHITESPACE)
             ) {
-                // This is an empty line and the line before this one is not
-                //  empty, so this could be the start of a multiple empty
-                // line block.
-                $next  = $phpcsFile->findNext(T_WHITESPACE, $stackPtr, null, true);
+                // This is an empty line and the line before this one is not  empty, so this could be the start of a multiple empty line block.
+                $next = $phpcsFile->findNext(T_WHITESPACE, $stackPtr, null, true);
                 if ($next === false) {
                     //The rest of the file is whitespace
                     $lines = $tokens[count($tokens) - 1]['line'] - $tokens[$stackPtr - 1]['line'];
