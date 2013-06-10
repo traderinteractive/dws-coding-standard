@@ -70,11 +70,16 @@ class DWS_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Snif
                 $phpcsFile->addError('Expected 0 spaces after "%s"; %s found', $stackPtr, 'SpacingAfterUnary', array($operator, $nextSpaces));
             }
         } else {
-            if (!$previousSplitsLine && $previousSpaces !== 1) {
+            if ($tokens[$stackPtr]['code'] === T_INLINE_ELSE && $tokens[$previousNonEmpty]['code'] === T_INLINE_THEN) {
+                if ($previousSpaces !== 0) {
+                    $phpcsFile->addError('Expected 0 spaces inside "?:"; %s found', $stackPtr, 'SpacingInTernary', array($previousSpaces));
+                }
+            } elseif (!$previousSplitsLine && $previousSpaces !== 1) {
                 $phpcsFile->addError('Expected 1 space before "%s"; %s found', $stackPtr, 'SpacingBefore', array($operator, $previousSpaces));
             }
 
-            if (!$nextSplitsLine && $nextSpaces !== 1) {
+            $isTernaryShortcut = $tokens[$stackPtr]['code'] === T_INLINE_THEN && $tokens[$nextNonEmpty]['code'] === T_INLINE_ELSE;
+            if (!$isTernaryShortcut && !$nextSplitsLine && $nextSpaces !== 1) {
                 $phpcsFile->addError('Expected 1 space after "%s"; %s found', $stackPtr, 'SpacingAfter', array($operator, $nextSpaces));
             }
         }
