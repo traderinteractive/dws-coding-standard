@@ -1,5 +1,5 @@
 <?php
-class DWS_Sniffs_WhiteSpace_ControlStructureTrailingSpacingSniffTest extends AbstractSniffUnitTest
+final class DWS_Sniffs_WhiteSpace_ControlStructureTrailingSpacingSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
