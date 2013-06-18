@@ -12,7 +12,7 @@
  * @package DWS
  * @subpackage Sniffs
  */
-class DWS_Sniffs_ControlStructures_ControlSignatureSniff extends PHP_CodeSniffer_Standards_AbstractPatternSniff
+final class DWS_Sniffs_ControlStructures_ControlSignatureSniff extends PHP_CodeSniffer_Standards_AbstractPatternSniff
 {
     /**
      * Initialze the parent AbstractPatternSniff to ignore comments

@@ -12,7 +12,7 @@
  * @package DWS
  * @subpackage Sniffs
  */
-class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_AbstractVariableSniff
+final class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standards_AbstractVariableSniff
 {
     /**
      * This stores the first scope level that a variable is encountered

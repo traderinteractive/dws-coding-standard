@@ -1,5 +1,5 @@
 <?php
-class DWS_Sniffs_ControlStructures_ControlSignatureSniffTest extends AbstractSniffUnitTest
+final class DWS_Sniffs_ControlStructures_ControlSignatureSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
