@@ -1,5 +1,5 @@
 <?php
-class DWS_Sniffs_Strings_EmbeddedVariablesSniffTest extends AbstractSniffUnitTest
+final class DWS_Sniffs_Strings_EmbeddedVariablesSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {

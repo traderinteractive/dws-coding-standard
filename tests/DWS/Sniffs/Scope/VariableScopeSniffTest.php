@@ -1,5 +1,5 @@
 <?php
-class DWS_Sniffs_Scope_VariableScopeSniffTest extends AbstractSniffUnitTest
+final class DWS_Sniffs_Scope_VariableScopeSniffTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
