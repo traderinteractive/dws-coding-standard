@@ -1,7 +1,7 @@
 <phpunit colors="true" bootstrap="./tests/bootstrap.php">
-  <filter>
-    <whitelist>
-      <directory>DWS/Sniffs</directory>
-    </whitelist>
-  </filter>
+    <filter>
+        <whitelist>
+            <directory>DWS/Sniffs</directory>
+        </whitelist>
+    </filter>
 </phpunit>
