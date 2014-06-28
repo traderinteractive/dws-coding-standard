@@ -1,4 +1,7 @@
 <phpunit colors="true" bootstrap="./tests/bootstrap.php">
+    <testsuite name="Unit Tests">
+        <directory>./tests/DWS</directory>
+    </testsuite>
     <filter>
         <whitelist>
             <directory>DWS/Sniffs</directory>
