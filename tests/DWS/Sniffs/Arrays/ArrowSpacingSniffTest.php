@@ -5,12 +5,12 @@ final class DWS_Sniffs_Arrays_ArrowSpacingSniffTest extends AbstractSniffUnitTes
 {
     public function getErrorList()
     {
-        return array(5 => 1, 6 => 1, 7 => 1, 8 => 1, 9 => 1, 10 => 1, 11 => 1, 12 => 1);
+        return [5 => 1, 6 => 1, 7 => 1, 8 => 1, 9 => 1, 10 => 1, 11 => 1, 12 => 1];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()

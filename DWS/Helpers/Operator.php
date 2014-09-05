@@ -41,7 +41,7 @@ final class DWS_Helpers_Operator
                     PHP_CodeSniffer_Tokens::$comparisonTokens,
                     PHP_CodeSniffer_Tokens::$operators,
                     PHP_CodeSniffer_Tokens::$assignmentTokens,
-                    array(
+                    [
                         T_RETURN,
                         T_COMMA,
                         T_OPEN_PARENTHESIS,
@@ -51,7 +51,7 @@ final class DWS_Helpers_Operator
                         T_INLINE_THEN,
                         T_INLINE_ELSE,
                         T_CASE,
-                    )
+                    ]
                 )
             );
 

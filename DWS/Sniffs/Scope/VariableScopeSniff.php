@@ -17,7 +17,7 @@ final class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standard
     /**
      * This stores the first scope level that a variable is encountered
      */
-    private $_variableScopes = array();
+    private $_variableScopes = [];
 
     /**
      * Processes normal variables.
@@ -57,7 +57,7 @@ final class DWS_Sniffs_Scope_VariableScopeSniff extends PHP_CodeSniffer_Standard
             }
 
             // find previous non-whitespace token. if it's a double colon, assume static class var
-            $objOperator = $phpcsFile->findPrevious(array(T_WHITESPACE), ($stackPtr - 1), null, true);
+            $objOperator = $phpcsFile->findPrevious([T_WHITESPACE], ($stackPtr - 1), null, true);
             if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON) {
                 return;
             }

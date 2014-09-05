@@ -23,7 +23,7 @@ final class DWS_Sniffs_Formatting_MultilineBracketedExpressionIndentSniff implem
      */
     public function register()
     {
-        return array(T_OPEN_SQUARE_BRACKET, T_OPEN_SHORT_ARRAY, T_OPEN_PARENTHESIS);
+        return [T_OPEN_SQUARE_BRACKET, T_OPEN_SHORT_ARRAY, T_OPEN_PARENTHESIS];
     }
 
     /**
@@ -47,13 +47,13 @@ final class DWS_Sniffs_Formatting_MultilineBracketedExpressionIndentSniff implem
         $beginningIndent = DWS_Helpers_WhiteSpace::indentOfLine($phpcsFile, $bracketStart);
 
         if ($tokens[$bracketEnd]['column'] !== $beginningIndent) {
-            $data = array($beginningIndent - 1, $tokens[$bracketEnd]['column'] - 1, $tokens[$bracketEnd]['content']);
+            $data = [$beginningIndent - 1, $tokens[$bracketEnd]['column'] - 1, $tokens[$bracketEnd]['content']];
             $phpcsFile->addError('Expected indentation of %s spaces, %s found for ending bracket "%s"', $bracketEnd, 'EndIndent', $data);
         }
 
         $nextToken = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $bracketStart + 1, $bracketEnd, true);
         if ($nextToken !== false && $tokens[$nextToken]['line'] === $tokens[$bracketStart]['line']) {
-            $data = array($tokens[$bracketStart]['content']);
+            $data = [$tokens[$bracketStart]['content']];
             $phpcsFile->addError('Expected first item after opening "%s" to be indented on a new line', $nextToken, 'OpeningIndent', $data);
         }
 
@@ -74,7 +74,7 @@ final class DWS_Sniffs_Formatting_MultilineBracketedExpressionIndentSniff implem
             }
 
             if ($tokens[$firstOnLine]['line'] === $line && $tokens[$firstOnLine]['column'] !== $beginningIndent + 4) {
-                $data = array($beginningIndent + 3, $tokens[$firstOnLine]['column'] - 1);
+                $data = [$beginningIndent + 3, $tokens[$firstOnLine]['column'] - 1];
                 $phpcsFile->addError('Expected indentation of %s spaces, %s found', $firstOnLine, 'MultiLineIndent', $data);
             }
         }

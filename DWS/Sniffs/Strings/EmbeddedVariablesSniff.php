@@ -21,7 +21,7 @@ final class DWS_Sniffs_Strings_EmbeddedVariablesSniff implements PHP_CodeSniffer
      */
     public function register()
     {
-        return array(T_DOUBLE_QUOTED_STRING);
+        return [T_DOUBLE_QUOTED_STRING];
     }
 
     /**
@@ -58,7 +58,7 @@ final class DWS_Sniffs_Strings_EmbeddedVariablesSniff implements PHP_CodeSniffer
                             "String {$workingString} has a variable embedded without being delimited by braces",
                             $stackPtr,
                             'ContainsNonDelimitedVariable',
-                            array($token[1])
+                            [$token[1]]
                         );
                     }
                 } elseif ($token == '}') {

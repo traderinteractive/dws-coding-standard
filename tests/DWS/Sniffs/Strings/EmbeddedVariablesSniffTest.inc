@@ -3,7 +3,7 @@ $world = 'World';
 $foo = "Hello, $world";
 $foo = "Hello, {$world}";
 
-$world = array('place' => 'World');
+$world = ['place' => 'World'];
 $foo = "Hello, $world['place']";
 $foo = "Hello, {$world['place']}";
 

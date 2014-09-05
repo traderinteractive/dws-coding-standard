@@ -21,7 +21,7 @@ final class DWS_Sniffs_Strings_DoubleQuoteUsageSniff implements PHP_CodeSniffer_
      */
     public function register()
     {
-        return array(T_CONSTANT_ENCAPSED_STRING);
+        return [T_CONSTANT_ENCAPSED_STRING];
     }
 
     /**
@@ -51,7 +51,7 @@ final class DWS_Sniffs_Strings_DoubleQuoteUsageSniff implements PHP_CodeSniffer_
             return;
         }
 
-        $allowedStrings = array('\0', '\n', '\r', '\f', '\t', '\v', '\x', '\'');
+        $allowedStrings = ['\0', '\n', '\r', '\f', '\t', '\v', '\x', '\''];
 
         foreach ($allowedStrings as $testChar) {
             if (strpos($workingString, $testChar) !== false) {

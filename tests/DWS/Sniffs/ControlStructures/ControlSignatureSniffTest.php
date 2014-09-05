@@ -3,12 +3,12 @@ final class DWS_Sniffs_ControlStructures_ControlSignatureSniffTest extends Abstr
 {
     public function getErrorList()
     {
-        return array(2 => 1, 14 => 1);
+        return [2 => 1, 14 => 1];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()

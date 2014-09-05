@@ -48,8 +48,8 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
      */
     public final function runTest()
     {
-        self::$_phpcs->process(array(), 'DWS', array($this->_getSniffName()));
-        self::$_phpcs->setIgnorePatterns(array());
+        self::$_phpcs->process([], 'DWS', [$this->_getSniffName()]);
+        self::$_phpcs->setIgnorePatterns([]);
 
         $testFile = dirname(__DIR__) . '/tests/' . str_replace('_', '/', get_class($this)) . '.inc';
         if (!file_exists($testFile)) {
@@ -64,7 +64,7 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
         }
 
         $files = self::$_phpcs->getFiles();
-        if ($files === array()) {
+        if ($files === []) {
             echo "Skipped: {$testFile}\n";
             $this->markTestSkipped();
         }
@@ -105,20 +105,15 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
          we can report on errors and warnings in the same line even though
          it's not really structured to allow that.
         */
-        $allProblems = array();
-        $failureMessages = array();
+        $allProblems = [];
+        $failureMessages = [];
         foreach ($foundErrors as $line => $lineErrors) {
             if (!array_key_exists($line, $allProblems)) {
-                $allProblems[$line] = array(
-                    'expected_errors' => 0,
-                    'expected_warnings' => 0,
-                    'found_errors' => array(),
-                    'found_warnings' => array(),
-                );
+                $allProblems[$line] = ['expected_errors' => 0, 'expected_warnings' => 0, 'found_errors' => [], 'found_warnings' => []];
             }
 
             foreach ($lineErrors as $column => $errors) {
-                $errorsTemp = array();
+                $errorsTemp = [];
                 foreach ($errors as $foundError) {
                     $errorsTemp[] = $foundError['message'];
                 }
@@ -132,12 +127,7 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
 
         foreach ($expectedErrors as $line => $numErrors) {
             if (!array_key_exists($line, $allProblems)) {
-                $allProblems[$line] = array(
-                    'expected_errors' => 0,
-                    'expected_warnings' => 0,
-                    'found_errors' => array(),
-                    'found_warnings' => array(),
-                );
+                $allProblems[$line] = ['expected_errors' => 0, 'expected_warnings' => 0, 'found_errors' => [], 'found_warnings' => []];
             }
 
             $allProblems[$line]['expected_errors'] = $numErrors;
@@ -145,16 +135,11 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
 
         foreach ($foundWarnings as $line => $lineWarnings) {
             if (!array_key_exists($line, $allProblems)) {
-                $allProblems[$line] = array(
-                    'expected_errors' => 0,
-                    'expected_warnings' => 0,
-                    'found_errors' => array(),
-                    'found_warnings' => array(),
-                );
+                $allProblems[$line] = ['expected_errors' => 0, 'expected_warnings' => 0, 'found_errors' => [], 'found_warnings' => []];
             }
 
             foreach ($lineWarnings as $column => $warnings) {
-                $warningsTemp = array();
+                $warningsTemp = [];
                 foreach ($warnings as $warning) {
                     $warningsTemp[] = $warning['message'];
                 }
@@ -168,12 +153,7 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
 
         foreach ($expectedWarnings as $line => $numWarnings) {
             if (!array_key_exists($line, $allProblems)) {
-                $allProblems[$line] = array(
-                    'expected_errors' => 0,
-                    'expected_warnings' => 0,
-                    'found_errors' => array(),
-                    'found_warnings' => array(),
-                );
+                $allProblems[$line] = ['expected_errors' => 0, 'expected_warnings' => 0, 'found_errors' => [], 'found_warnings' => []];
             }
 
             $allProblems[$line]['expected_warnings'] = $numWarnings;

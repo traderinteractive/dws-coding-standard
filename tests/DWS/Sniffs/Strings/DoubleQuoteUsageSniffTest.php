@@ -3,12 +3,12 @@ final class DWS_Sniffs_Strings_DoubleQuoteUsageSniffTest extends AbstractSniffUn
 {
     public function getErrorList()
     {
-        return array(2 => 1, 9 => 1);
+        return [2 => 1, 9 => 1];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()
