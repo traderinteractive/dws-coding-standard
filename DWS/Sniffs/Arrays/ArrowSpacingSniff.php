@@ -21,7 +21,7 @@ final class DWS_Sniffs_Arrays_ArrowSpacingSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_DOUBLE_ARROW);
+        return [T_DOUBLE_ARROW];
     }
 
     /**
@@ -40,14 +40,14 @@ final class DWS_Sniffs_Arrays_ArrowSpacingSniff implements PHP_CodeSniffer_Sniff
         if ($beforeToken['code'] !== T_WHITESPACE) {
             $phpcsFile->addError('Expected 1 space before =>, 0 found', $stackPtr, 'SpaceBeforeArrow');
         } elseif ($beforeToken['content'] !== ' ') {
-            $phpcsFile->addError('Expected 1 space before =>, %s found', $stackPtr, 'SpaceBeforeArrow', array(strlen($beforeToken['content'])));
+            $phpcsFile->addError('Expected 1 space before =>, %s found', $stackPtr, 'SpaceBeforeArrow', [strlen($beforeToken['content'])]);
         }
 
         $afterToken = $tokens[$stackPtr + 1];
         if ($afterToken['code'] !== T_WHITESPACE) {
             $phpcsFile->addError('Expected 1 space after =>, 0 found', $stackPtr, 'SpaceAfterArrow');
         } elseif ($afterToken['content'] !== ' ') {
-            $phpcsFile->addError('Expected 1 space after =>, %s found', $stackPtr, 'SpaceAfterArrow', array(strlen($afterToken['content'])));
+            $phpcsFile->addError('Expected 1 space after =>, %s found', $stackPtr, 'SpaceAfterArrow', [strlen($afterToken['content'])]);
         }
     }
 }

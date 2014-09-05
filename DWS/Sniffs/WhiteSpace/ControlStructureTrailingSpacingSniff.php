@@ -25,18 +25,7 @@ final class DWS_Sniffs_WhiteSpace_ControlStructureTrailingSpacingSniff implement
      */
     public function register()
     {
-        return array(
-            T_IF,
-            T_WHILE,
-            T_FOREACH,
-            T_FOR,
-            T_SWITCH,
-            T_DO,
-            T_ELSE,
-            T_ELSEIF,
-            T_TRY,
-            T_CATCH,
-        );
+        return [T_IF, T_WHILE, T_FOREACH, T_FOR, T_SWITCH, T_DO, T_ELSE, T_ELSEIF, T_TRY, T_CATCH];
     }
 
     /**

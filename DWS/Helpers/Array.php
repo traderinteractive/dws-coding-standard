@@ -27,7 +27,7 @@ final class DWS_Helpers_Array
         $tokens = $phpcsFile->getTokens();
         $arrayEnd = DWS_Helpers_Bracket::bracketEnd($phpcsFile, $arrayStart);
 
-        $commas = array();
+        $commas = [];
         for ($i = $arrayStart + 1; $i <= $arrayEnd; $i++) {
             if (array_key_exists('parenthesis_closer', $tokens[$i])) {
                 $i = $tokens[$i]['parenthesis_closer'];

@@ -3,7 +3,7 @@ final class DWS_Sniffs_WhiteSpace_OperatorSpacingSniffTest extends AbstractSniff
 {
     public function getErrorList()
     {
-        return array(
+        return [
             3 => 2,
             4 => 2,
             7 => 2,
@@ -20,12 +20,12 @@ final class DWS_Sniffs_WhiteSpace_OperatorSpacingSniffTest extends AbstractSniff
             46 => 2,
             49 => 2,
             50 => 1,
-        );
+        ];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()

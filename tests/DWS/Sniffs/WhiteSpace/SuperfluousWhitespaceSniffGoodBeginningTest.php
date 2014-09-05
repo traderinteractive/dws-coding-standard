@@ -3,12 +3,12 @@ final class DWS_Sniffs_WhiteSpace_SuperfluousWhitespaceSniffGoodBeginningTest ex
 {
     public function getErrorList()
     {
-        return array(6 => 1);
+        return [6 => 1];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()

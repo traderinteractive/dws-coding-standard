@@ -3,7 +3,7 @@ final class DWS_Sniffs_WhiteSpace_ControlStructureInteriorSpacingSniffTest exten
 {
     public function getErrorList()
     {
-        return array(
+        return [
             2 => 1,
             7 => 1,
             12 => 1,
@@ -24,12 +24,12 @@ final class DWS_Sniffs_WhiteSpace_ControlStructureInteriorSpacingSniffTest exten
             107 => 1,
             112 => 1,
             121 => 1,
-        );
+        ];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()

@@ -29,7 +29,7 @@ final class DWS_Sniffs_ControlStructures_ControlSignatureSniff extends PHP_CodeS
      */
     protected function getPatterns()
     {
-        return array(
+        return [
             'do {EOL...} while (...);EOL',
             'while (...) {EOL',
             'for (...) {EOL',
@@ -38,6 +38,6 @@ final class DWS_Sniffs_ControlStructures_ControlSignatureSniff extends PHP_CodeS
             '} elseif (...) {EOL',
             '} else {EOL',
             'try {EOL...} catch (...) {EOL',
-        );
+        ];
     }
 }

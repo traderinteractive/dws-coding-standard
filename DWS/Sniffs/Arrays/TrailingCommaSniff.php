@@ -21,7 +21,7 @@ final class DWS_Sniffs_Arrays_TrailingCommaSniff implements PHP_CodeSniffer_Snif
      */
     public function register()
     {
-        return array(T_ARRAY, T_OPEN_SHORT_ARRAY);
+        return [T_ARRAY, T_OPEN_SHORT_ARRAY];
     }
 
     /**

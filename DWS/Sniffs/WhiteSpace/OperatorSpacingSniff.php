@@ -27,7 +27,7 @@ final class DWS_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffe
                 PHP_CodeSniffer_Tokens::$operators,
                 PHP_CodeSniffer_Tokens::$assignmentTokens,
                 PHP_CodeSniffer_Tokens::$booleanOperators,
-                array(T_INLINE_THEN, T_INLINE_ELSE, T_BOOLEAN_NOT, T_STRING_CONCAT)
+                [T_INLINE_THEN, T_INLINE_ELSE, T_BOOLEAN_NOT, T_STRING_CONCAT]
             )
         );
 
@@ -61,26 +61,26 @@ final class DWS_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffe
             if (
                 !$previousSplitsLine &&
                 $previousSpaces !== 1 &&
-                !in_array($tokens[$previousNonEmpty]['code'], array(T_OPEN_PARENTHESIS, T_OPEN_SQUARE_BRACKET, T_OPEN_SHORT_ARRAY))
+                !in_array($tokens[$previousNonEmpty]['code'], [T_OPEN_PARENTHESIS, T_OPEN_SQUARE_BRACKET, T_OPEN_SHORT_ARRAY])
             ) {
-                $phpcsFile->addError('Expected 1 space before "%s"; %s found', $stackPtr, 'SpacingBefore', array($operator, $previousSpaces));
+                $phpcsFile->addError('Expected 1 space before "%s"; %s found', $stackPtr, 'SpacingBefore', [$operator, $previousSpaces]);
             }
 
             if ($nextSpaces !== 0) {
-                $phpcsFile->addError('Expected 0 spaces after "%s"; %s found', $stackPtr, 'SpacingAfterUnary', array($operator, $nextSpaces));
+                $phpcsFile->addError('Expected 0 spaces after "%s"; %s found', $stackPtr, 'SpacingAfterUnary', [$operator, $nextSpaces]);
             }
         } else {
             if ($tokens[$stackPtr]['code'] === T_INLINE_ELSE && $tokens[$previousNonEmpty]['code'] === T_INLINE_THEN) {
                 if ($previousSpaces !== 0) {
-                    $phpcsFile->addError('Expected 0 spaces inside "?:"; %s found', $stackPtr, 'SpacingInTernary', array($previousSpaces));
+                    $phpcsFile->addError('Expected 0 spaces inside "?:"; %s found', $stackPtr, 'SpacingInTernary', [$previousSpaces]);
                 }
             } elseif (!$previousSplitsLine && $previousSpaces !== 1) {
-                $phpcsFile->addError('Expected 1 space before "%s"; %s found', $stackPtr, 'SpacingBefore', array($operator, $previousSpaces));
+                $phpcsFile->addError('Expected 1 space before "%s"; %s found', $stackPtr, 'SpacingBefore', [$operator, $previousSpaces]);
             }
 
             $isTernaryShortcut = $tokens[$stackPtr]['code'] === T_INLINE_THEN && $tokens[$nextNonEmpty]['code'] === T_INLINE_ELSE;
             if (!$isTernaryShortcut && !$nextSplitsLine && $nextSpaces !== 1) {
-                $phpcsFile->addError('Expected 1 space after "%s"; %s found', $stackPtr, 'SpacingAfter', array($operator, $nextSpaces));
+                $phpcsFile->addError('Expected 1 space after "%s"; %s found', $stackPtr, 'SpacingAfter', [$operator, $nextSpaces]);
             }
         }
     }

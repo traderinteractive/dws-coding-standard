@@ -3,12 +3,12 @@ final class DWS_Sniffs_WhiteSpace_ControlStructureTrailingSpacingSniffTest exten
 {
     public function getErrorList()
     {
-        return array(28 => 1, 32 => 1);
+        return [28 => 1, 32 => 1];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()

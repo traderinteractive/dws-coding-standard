@@ -5,12 +5,12 @@ final class DWS_Sniffs_Arrays_ArrayDeclarationSniffTest extends AbstractSniffUni
 {
     public function getErrorList()
     {
-        return array(5 => 1, 7 => 1, 8 => 1);
+        return [5 => 1, 7 => 1, 8 => 1];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     protected function _getSniffName()

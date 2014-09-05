@@ -28,7 +28,7 @@ final class DWS_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeS
      *
      * @var array
      */
-    public $supportedTokenizers = array('PHP', 'JS');
+    public $supportedTokenizers = ['PHP', 'JS'];
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -37,7 +37,7 @@ final class DWS_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeS
      */
     public function register()
     {
-        return array(T_STRING_CONCAT, T_PLUS);
+        return [T_STRING_CONCAT, T_PLUS];
     }
 
     /**

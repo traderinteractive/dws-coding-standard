@@ -21,7 +21,7 @@ final class DWS_Sniffs_Arrays_CommaSpacingSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_ARRAY, T_OPEN_SHORT_ARRAY);
+        return [T_ARRAY, T_OPEN_SHORT_ARRAY];
     }
 
     /**
@@ -50,7 +50,7 @@ final class DWS_Sniffs_Arrays_CommaSpacingSniff implements PHP_CodeSniffer_Sniff
                     $phpcsFile->addError('Expected 1 space after comma in single-line array', $comma, 'SingleLineSpaceAfterComma');
                 }
             } elseif ($tokens[$comma + 1]['content'][0] !== "\n") {
-                $nextMember = $phpcsFile->findNext(array(T_WHITESPACE, T_COMMENT), $comma + 1, $arrayEnd, true);
+                $nextMember = $phpcsFile->findNext([T_WHITESPACE, T_COMMENT], $comma + 1, $arrayEnd, true);
                 if ($nextMember !== false && $tokens[$nextMember]['line'] === $tokens[$comma]['line']) {
                     $phpcsFile->addError('Comma in multi-line array was not last token on line', $comma, 'MultiLineNewlineAfterComma');
                 }
