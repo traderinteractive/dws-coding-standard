@@ -18,7 +18,7 @@ if ($returnStatus !== 0) {
 $phpunitConfiguration = PHPUnit_Util_Configuration::getInstance(__DIR__ . '/phpunit.xml');
 $phpunitArguments = ['coverageHtml' => __DIR__ . '/coverage', 'configuration' => $phpunitConfiguration];
 $testRunner = new PHPUnit_TextUI_TestRunner();
-$result = $testRunner->doRun($phpunitConfiguration->getTestSuiteConfiguration(), $phpunitArguments);
+$result = $testRunner->doRun($phpunitConfiguration->getTestSuiteConfiguration(), $phpunitArguments, false);
 if (!$result->wasSuccessful()) {
     exit(1);
 }
