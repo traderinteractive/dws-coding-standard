@@ -15,6 +15,6 @@ final class DWS_Sniffs_Arrays_TrailingCommaSniffTest extends AbstractSniffUnitTe
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Arrays_TrailingCommaSniff';
+        return 'DWS.Arrays.TrailingComma';
     }
 }

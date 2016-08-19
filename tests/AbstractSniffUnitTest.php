@@ -6,8 +6,6 @@
  * @package   PHP_CodeSniffer
  */
 
-define('PHP_CODESNIFFER_IN_TESTS', true);
-
 /**
  * An abstract class that all sniff unit tests must extend.
  *
@@ -36,6 +34,7 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
     {
         if (self::$_phpcs === null) {
             self::$_phpcs = new PHP_CodeSniffer();
+            self::$_phpcs->cli->setCommandLineValues(['-s']);
         }
     }
 
@@ -57,19 +56,19 @@ abstract class AbstractSniffUnitTest extends PHPUnit_Framework_TestCase
             return;
         }
 
+        $phpcsFile = null;
         try {
-            self::$_phpcs->processFile($testFile);
+            $phpcsFile = self::$_phpcs->processFile($testFile);
         } catch (Exception $e) {
             $this->fail("An unexpected exception has been caught: {$e->getMessage()}");
         }
 
-        $files = self::$_phpcs->getFiles();
-        if ($files === []) {
+        if ($phpcsFile === null) {
             echo "Skipped: {$testFile}\n";
             $this->markTestSkipped();
         }
 
-        $failureMessages = $this->generateFailureMessages($files[0]);
+        $failureMessages = $this->generateFailureMessages($phpcsFile);
         if (count($failureMessages) > 0) {
             $this->fail(implode("\n", $failureMessages));
         }

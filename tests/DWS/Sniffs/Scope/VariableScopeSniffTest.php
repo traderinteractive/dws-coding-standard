@@ -13,6 +13,6 @@ final class DWS_Sniffs_Scope_VariableScopeSniffTest extends AbstractSniffUnitTes
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Scope_VariableScopeSniff';
+        return 'DWS.Scope.VariableScope';
     }
 }

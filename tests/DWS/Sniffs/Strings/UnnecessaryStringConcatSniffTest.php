@@ -13,6 +13,6 @@ final class DWS_Sniffs_Strings_UnnecessaryStringConcatSniffTest extends Abstract
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Strings_UnnecessaryStringConcatSniff';
+        return 'DWS.Strings.UnnecessaryStringConcat';
     }
 }

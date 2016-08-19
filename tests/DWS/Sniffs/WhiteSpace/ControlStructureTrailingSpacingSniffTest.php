@@ -13,6 +13,6 @@ final class DWS_Sniffs_WhiteSpace_ControlStructureTrailingSpacingSniffTest exten
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_WhiteSpace_ControlStructureTrailingSpacingSniff';
+        return 'DWS.WhiteSpace.ControlStructureTrailingSpacing';
     }
 }
