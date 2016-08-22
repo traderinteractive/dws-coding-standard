@@ -15,6 +15,6 @@ final class DWS_Sniffs_Arrays_ArrowSpacingSniffTest extends AbstractSniffUnitTes
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Arrays_ArrowSpacingSniff';
+        return 'DWS.Arrays.ArrowSpacing';
     }
 }

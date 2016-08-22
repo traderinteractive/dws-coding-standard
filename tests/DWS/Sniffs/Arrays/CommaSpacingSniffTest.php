@@ -15,6 +15,6 @@ final class DWS_Sniffs_Arrays_CommaSpacingSniffTest extends AbstractSniffUnitTes
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Arrays_CommaSpacingSniff';
+        return 'DWS.Arrays.CommaSpacing';
     }
 }

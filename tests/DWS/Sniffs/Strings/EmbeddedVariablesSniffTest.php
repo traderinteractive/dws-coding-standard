@@ -13,6 +13,6 @@ final class DWS_Sniffs_Strings_EmbeddedVariablesSniffTest extends AbstractSniffU
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Strings_EmbeddedVariablesSniff';
+        return 'DWS.Strings.EmbeddedVariables';
     }
 }

@@ -15,6 +15,6 @@ final class DWS_Sniffs_Arrays_ArrayDeclarationSniffTest extends AbstractSniffUni
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Arrays_ArrayDeclarationSniff';
+        return 'DWS.Arrays.ArrayDeclaration';
     }
 }

@@ -30,6 +30,6 @@ final class DWS_Sniffs_WhiteSpace_OperatorSpacingSniffTest extends AbstractSniff
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_WhiteSpace_OperatorSpacingSniff';
+        return 'DWS.WhiteSpace.OperatorSpacing';
     }
 }

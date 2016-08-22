@@ -15,6 +15,6 @@ final class DWS_Sniffs_Formatting_MultilineBracketedExpressionIndentSniffTest ex
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Formatting_MultilineBracketedExpressionIndentSniff';
+        return 'DWS.Formatting.MultilineBracketedExpressionIndent';
     }
 }

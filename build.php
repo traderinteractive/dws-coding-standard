@@ -23,11 +23,11 @@ if (!$result->wasSuccessful()) {
     exit(1);
 }
 
-$cloverCoverage = new PHP_CodeCoverage_Report_Clover();
+$cloverCoverage = new \SebastianBergmann\CodeCoverage\Report\Clover();
 file_put_contents('clover.xml', $cloverCoverage->process($result->getCodeCoverage()));
 
-$coverageFactory = new PHP_CodeCoverage_Report_Factory();
-$coverageReport = $coverageFactory->create($result->getCodeCoverage());
+$coverageBuilder = new \SebastianBergmann\CodeCoverage\Node\Builder();
+$coverageReport = $coverageBuilder->build($result->getCodeCoverage());
 if ($coverageReport->getNumExecutedLines() !== $coverageReport->getNumExecutableLines()) {
     file_put_contents('php://stderr', "Code coverage was NOT 100%\n");
     exit(1);

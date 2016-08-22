@@ -13,6 +13,6 @@ final class DWS_Sniffs_Strings_DoubleQuoteUsageSniffTest extends AbstractSniffUn
 
     protected function _getSniffName()
     {
-        return 'DWS_Sniffs_Strings_DoubleQuoteUsageSniff';
+        return 'DWS.Strings.DoubleQuoteUsage';
     }
 }
