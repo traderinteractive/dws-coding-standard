@@ -19,7 +19,7 @@ $phpunitConfiguration = PHPUnit_Util_Configuration::getInstance(__DIR__ . '/phpu
 $phpunitArguments = ['coverageHtml' => __DIR__ . '/coverage', 'configuration' => $phpunitConfiguration];
 $testRunner = new PHPUnit_TextUI_TestRunner();
 $result = $testRunner->doRun($phpunitConfiguration->getTestSuiteConfiguration(), $phpunitArguments, false);
-if (!$result->wasSuccessful()) {
+if (!$result->wasSuccessful() || !$result->getCodeCoverage()) {
     exit(1);
 }
 
