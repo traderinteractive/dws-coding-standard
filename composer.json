@@ -1,5 +1,5 @@
 {
-    "name": "dominionenterprises/dws-coding-standard",
+    "name": "traderinteractive/coding-standard",
     "description": "DWS Coding standard",
     "keywords": ["phpcs", "coding", "standard"],
     "authors": [
@@ -20,12 +20,15 @@
         }
     ],
     "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
     "require": {
-        "php": "~5.6 || ~7.0",
-        "squizlabs/php_codesniffer": "~2.6"
+        "php": "^5.6 || ^7.0",
+        "squizlabs/php_codesniffer": "^2.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.5",
-        "satooshi/php-coveralls": "~1.0"
+        "php-coveralls/php-coveralls": "^1.0",
+        "phpunit/phpunit": "^5.5"
     }
 }
